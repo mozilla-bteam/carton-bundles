@@ -28,8 +28,7 @@ COPY bugzilla/ /opt/bugzilla/
 RUN cd /opt/bugzilla && \
     git clean -df && \
     $PERL Makefile.PL && \
-    make cpanfile && \
-    sed -i -e '/sqlite/ d' -e '/DBD::Pg/ d' -e '/Oracle/ d' -e '/mod_perl2/ d' cpanfile && \
+    make cpanfile GEN_CPANFILE_ARGS='-A -U pg -U oracle -U mod_perl'  && \
     $CARTON install && \
     $CARTON bundle && \
     $CARTON fatpack && \
