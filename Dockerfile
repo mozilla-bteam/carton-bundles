@@ -9,7 +9,7 @@ FROM centos:6
 
 RUN yum -y -q update && \
     yum -y -q groupinstall  "Development Tools" && \
-    yum -y -q install perl-core gd-devel expat-devel httpd-devel mysql-devel
+    yum -y -q install perl-core gd-devel expat-devel httpd-devel mysql-devel ImageMagick-perl
 
 ADD https://raw.github.com/tokuhirom/Perl-Build/master/perl-build /usr/local/bin/perl-build
 ADD https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm /usr/local/bin/cpanm
@@ -29,7 +29,12 @@ RUN cd /opt/bugzilla && \
     git clean -df && \
     $PERL Makefile.PL && \
     make cpanfile GEN_CPANFILE_ARGS='-A -U pg -U oracle -U mod_perl'  && \
+    sed -i -e '/Magick/ d' cpanfile && \
     $CARTON install && \
     $CARTON bundle && \
-    $CARTON fatpack && \
-    tar -zcf /vendor.tar.gz cpanfile cpanfile.snapshot vendor
+    $CARTON fatpack
+
+RUN rpm -qa > /opt/bugzilla/RPM_LIST
+RUN cd /opt/bugzilla && tar -zcf /vendor.tar.gz cpanfile cpanfile.snapshot vendor
+
+
