@@ -35,6 +35,6 @@ RUN cd /opt/bugzilla && \
     $CARTON fatpack
 
 RUN rpm -qa > /opt/bugzilla/RPM_LIST
-RUN cd /opt/bugzilla && tar -zcf /vendor.tar.gz cpanfile cpanfile.snapshot vendor
+RUN cd /opt/bugzilla && tar -zcf /vendor.tar.gz RPM_LIST cpanfile cpanfile.snapshot vendor
 
 
