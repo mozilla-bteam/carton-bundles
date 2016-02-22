@@ -9,7 +9,7 @@ FROM centos:6
 
 RUN yum -y -q update && \
     yum -y -q groupinstall  "Development Tools" && \
-    yum -y -q install perl-core gd-devel expat-devel httpd-devel mysql-devel ImageMagick-perl
+    yum -y -q install perl-core gd-devel expat-devel httpd-devel mysql-devel ImageMagick-perl mod_perl gmp gmp-devel
 
 ADD https://raw.github.com/tokuhirom/Perl-Build/master/perl-build /usr/local/bin/perl-build
 ADD https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm /usr/local/bin/cpanm
