@@ -18,23 +18,27 @@ RUN chmod a+x /usr/local/bin/perl-build /usr/local/bin/cpanm
 ENV PERL_VER 5.10.1
 ENV PERL_DIR /opt/perl-$PERL_VER
 ENV PERL $PERL_DIR/bin/perl
-ENV PERL_BUILD_OPTIONS --noman -A ccflags=-fPIC
+ENV PERL_BUILD_OPTIONS --noman -A ccflags=-fPIC -D useshrplib
 RUN perl-build $PERL_BUILD_OPTIONS $PERL_VER /opt/perl-$PERL_VER
 
 RUN $PERL /usr/local/bin/cpanm Carton App::FatPacker File::pushd
 ENV CARTON $PERL_DIR/bin/carton
 
 COPY bugzilla/ /opt/bugzilla/
+
 RUN cd /opt/bugzilla && \
     git clean -df && \
     $PERL Makefile.PL && \
     make cpanfile GEN_CPANFILE_ARGS='-A -U pg -U oracle -U mod_perl'  && \
-    sed -i -e '/Magick/ d' cpanfile && \
     $CARTON install && \
     $CARTON bundle && \
-    $CARTON fatpack
+    $CARTON fatpack && \
+    rm -vfr local/lib/perl5
 
+# Now install to the system perl
+RUN cd /opt/bugzilla && ./vendor/bin/carton install -cached --deployment
+
+# And run tests
+RUN cd /opt/bugzilla && prove -I local/lib/perl5 t
 RUN rpm -qa > /opt/bugzilla/RPM_LIST
 RUN cd /opt/bugzilla && tar -zcf /vendor.tar.gz RPM_LIST cpanfile cpanfile.snapshot vendor
-
-
