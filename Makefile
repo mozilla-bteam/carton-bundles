@@ -1,4 +1,4 @@
-NAME      = bmo
+NAME     ?= bmo
 IMAGE_TAG = $(NAME)-carton
 # change to sudo docker for linux
 DOCKER = docker 
