@@ -1,1 +1,7 @@
-bugzilla
+*/Dockerfile
+*/build-vanilla-perl
+*/probe-libs
+*/probe-packages
+*/image-id
+*/build.log
+*/vendor.tar.gz
