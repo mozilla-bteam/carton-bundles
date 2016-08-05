@@ -19,6 +19,6 @@ RUN qq{
             libgd-dev libssl-dev
             mysql-client mysql-server
             patchutils pkg-config
-            unzip wget
+            unzip wget libgmp10
 };
 
