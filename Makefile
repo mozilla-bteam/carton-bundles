@@ -1,31 +1,42 @@
-NAME     ?= bmo
-IMAGE_TAG = $(NAME)-carton
 # change to sudo docker for linux
 DOCKER = docker 
-SCRIPTS := $(wildcard scripts/*)
-FILES   := $(shell git ls-files $(NAME))
+BASE_DIR := $(shell pwd)
+PERL5LIB := $(BASE_DIR)/lib
 
-include $(NAME)/vars.mk
+IMAGE_TAG  = build-$*
+SCRIPTS   := $(wildcard scripts/*)
 
-$(NAME)/vendor.tar.gz: $(NAME)/image-id
-	./copy-file $< /vendor.tar.gz $@
+DIRS     = $(dir $(wildcard */Dockerfile.PL))
+TARBALLS = $(addsuffix vendor.tar.gz,$(DIRS))
 
-$(NAME)/image-id: $(NAME)/Dockerfile $(SCRIPTS)
-	cp -a scripts/* $(NAME)
-	cd $(NAME) && $(DOCKER) build -m 2G -t $(IMAGE_TAG) . > build.log
-	$(DOCKER) images -q $(IMAGE_TAG) > $@
+all: $(TARBALLS)
 
-$(NAME)/Dockerfile: Dockerfile.PL $(FILES)
-	( cd $(NAME) && perl ../$< ) > $@
+-include depends.mk
 
-$(NAME)/include.pl:
-	touch $@
+%/vendor.tar.gz: build-%
+	./run-and-copy $(IMAGE_TAG) $@ > $*/run.log
 
+build-%: %/Dockerfile %/.dockerignore $(SCRIPTS)
+	cd $* && $(DOCKER) build -m 2G -t $(IMAGE_TAG) . > build.log
+	docker images -q $@ > $@
+
+%/Dockerfile: %/Dockerfile.PL lib/Dockerfile.pm $(SCRIPTS)
+	perl $< > $@
+
+.DELETE_ON_ERROR: %/Dockerfile %/vendor.tar.gz
+
+%/.dockerignore: .dockerignore
+	cp $< $@
+
+ifdef CLEAN
 clean:
-	rm -fv $(NAME)/image-id \
-		   $(NAME)/Dockerfile \
-		   $(NAME)/vendor.tar.gz \
-		   $(patsubst scripts/%,$(NAME)/%,$(SCRIPTS)) \
-		   $(NAME)/build.log
+	rm -vf $(CLEAN)/Dockerfile $(CLEAN)/vendor.tar.gz $(CLEAN)/*.log $(CLEAN)/*.tmp
+endif
 
-.PHOMY: clean
+depends.mk: scan-deps $(git ls-files $(DIRS))
+	./scan-deps $(DIRS) > $@
+
+clean_all:
+	rm -vf */Dockerfile */vendor.tar.gz */*.log */*.tmp
+
+.PHOMY: clean all clean_all

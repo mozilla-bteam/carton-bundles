@@ -1,0 +1,18 @@
+#!/bin/bash
+
+$PERL $CARTON install && \
+    $PERL $CARTON bundle && \
+    $PERL $CARTON fatpack && \
+    rm -vfr local/lib/perl5 && \
+    perl ./vendor/bin/carton install --cached --deployment && \
+    prove -I local/lib/perl5 t || exit 1
+
+probe-packages > PACKAGES.txt
+probe-libs     > LIBS.txt
+tar --transform "s@^@/$NAME/@" \
+    -zcf /vendor.tar.gz \
+    PACKAGES.txt \
+    LIBS.txt \
+    cpanfile \
+    cpanfile.snapshot \
+    vendor
