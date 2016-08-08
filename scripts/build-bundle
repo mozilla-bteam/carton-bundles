@@ -1,15 +1,27 @@
 #!/bin/bash
 
-$PERL $CARTON install && \
+$PERL $CARTON install --cached && \
     $PERL $CARTON bundle && \
     $PERL $CARTON fatpack && \
     rm -vfr local/lib/perl5 && \
     perl ./vendor/bin/carton install --cached --deployment && \
     prove -I local/lib/perl5 t || exit 1
 
+# cpanm --notest -L vendor/cpm App::cpm Carton::Snapshot
+# cat > vendor/bin/cpm <<'CPM'
+# #!/usr/bin/perl
+# use strict;
+# use warnings;
+# use FindBin;
+# use lib "$FindBin::Bin/../cpm/lib/perl5";
+# use local::lib "$FindBin::Bin/../cpm";
+# exec("$FindBin::Bin/../cpm/bin/cpm", @ARGV);
+# CPM
+# chmod a+x vendor/bin/cpm
+
 probe-packages > PACKAGES.txt
 probe-libs     > LIBS.txt
-tar --transform "s@^@/$NAME/@" \
+tar --transform "s@^@$NAME/@" \
     -zcf /vendor.tar.gz \
     PACKAGES.txt \
     LIBS.txt \
