@@ -14,8 +14,6 @@ abrt-libs
 abrt-python
 abrt-tui
 acl
-alsa-lib
-alsa-utils
 apr
 apr-util
 apr-util-ldap
@@ -112,7 +110,6 @@ elfutils-libs
 elinks
 ethtool
 expat
-facter
 file
 file-libs
 filesystem
@@ -454,7 +451,6 @@ virt-what
 wget
 which
 words
-xdg-utils
 xmlrpc-c
 xmlrpc-c-client
 xmlto
@@ -470,4 +466,3 @@ yum-utils
 zd1211-firmware
 zip
 zlib
-zsh
