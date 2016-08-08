@@ -9,6 +9,8 @@ SCRIPTS   := $(wildcard scripts/*)
 DIRS     = $(dir $(wildcard */Dockerfile.PL))
 TARBALLS = $(addsuffix vendor.tar.gz,$(DIRS))
 
+export PERL5LIB DOCKER
+
 all: $(TARBALLS)
 
 -include depends.mk
