@@ -24,7 +24,10 @@ REQUIREMENTS
 Usage
 =====
 
+just run 'make' to build a vendor bundle.
+
 .. code-block:: bash
+
     make bmo/vendor.tar.gz
     # or
     make mozreview/vendor.tar.gz
