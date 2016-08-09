@@ -1,7 +1,6 @@
 use Dockerfile;
 
 FROM 'ubuntu:14.04';
-DOCKER_ENV BUGZILLA_GIT  => 'git://github.com/dylanwh/bmo.git';
 
 RUN qq{
     apt-key adv --keyserver ha.pool.sks-keyservers.net
@@ -33,5 +32,7 @@ RUN qq{
         unzip
         wget
 };
+
+git_clone('git://github.com/dylanwh/bmo.git');
 
 build_tarball();

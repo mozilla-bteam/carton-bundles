@@ -17,7 +17,6 @@ if $DOCKER start -a -i $container; then
     $DOCKER cp $container:/vendor.tar.gz $file
     touch $file
     $DOCKER stop $container
-    $DOCKER commit $container $image-result
     $DOCKER rm -v $container
 else
     echo "error in container $container" 1>&2

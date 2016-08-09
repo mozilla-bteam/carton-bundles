@@ -13,49 +13,39 @@ BEGIN { chdir $FindBin::Bin };
 
 our $BASE_DIR = realpath("$FindBin::Bin/..");
 our @EXPORT = qw(
-    FROM RUN COPY ADD MAINTAINER 
+    FROM RUN CMD COPY ADD MAINTAINER 
     DOCKER_ENV build_tarball $BASE_DIR
+    add_script git_clone
 );
 
 my %env;
 sub _CMD (@) {
-    my $keyword = shift;
-    say join(' ', $keyword, map { docker_arg($_, $keyword) } @_)
+    my ($keyword, @args) = @_;
+    if (@args == 1 && ref $args[0] && ref $args[0] eq 'ARRAY') {
+        say $keyword, ' [', join(', ', map { docker_quote($_) } @{$args[0]}), ']';
+    } else {
+        say join(' ', $keyword, map { docker_arg($_, $keyword) } @args)
+    }
 }
 
 sub DOCKER_ENV ($$) {
     my ($k, $v) = @_;
-    $env{$k} = 1;
+    $env{$k} = '$'.$k;;
     _CMD('ENV', $k, $v);
 }
 
 sub FROM ($)       { _CMD 'FROM', @_ }
-sub ADD ($$)       { _CMD 'ADD', @_ }
-sub COPY ($$)      { _CMD 'COPY', @_ }
+sub ADD ($;$)       { _CMD 'ADD', @_ }
+sub COPY ($;$)      { _CMD 'COPY', @_ }
 sub MAINTAINER ($) { _CMD 'MAINTAINER', @_ }
 sub WORKDIR ($)    { _CMD 'WORKDIR', @_ }
-
-sub RUN (@) {
-    if (@_ == 1) {
-        _CMD 'RUN', $_[0];
-    } else {
-        say 'RUN [', join(', ', map { docker_quote($_) } @_), ']';
-    }
-}
-
-sub CMD (@) {
-    if (@_ == 1) {
-        _CMD 'CMD', $_[0];
-    } else {
-        say 'CMD [', join(', ', map { docker_quote($_) } @_), ']';
-    }
-}
+sub RUN ($)        { _CMD 'RUN', @_ }
+sub CMD ($)        { _CMD 'CMD', @_ }
 
 sub build_tarball {
     my $GEN_CPANFILE_ARGS = $ENV{GEN_CPANFILE_ARGS} // '-A -U pg -U oracle -U mod_perl';
 
     DOCKER_ENV NAME         => basename($FindBin::Bin);
-    DOCKER_ENV BUGZILLA_DIR => '/opt/bugzilla';
     DOCKER_ENV PERL_DIR     => '/opt/vanilla-perl';
     DOCKER_ENV PERL         => '$PERL_DIR/bin/perl';
     DOCKER_ENV CARTON       => '$PERL_DIR/bin/carton';
@@ -67,8 +57,6 @@ sub build_tarball {
 
     RUN 'build-vanilla-perl';
     RUN '$PERL /usr/local/bin/cpanm --notest --quiet Carton App::FatPacker File::pushd';
-
-    RUN 'git clone $BUGZILLA_GIT $BUGZILLA_DIR';
 
     if (-f 'vendor.tar.gz') {
         WORKDIR '/opt/vendor';
@@ -99,6 +87,12 @@ sub build_tarball {
     CMD 'build-bundle';
 }
 
+sub git_clone {
+    my ($uri, $branch) = @_;
+    DOCKER_ENV BUGZILLA_DIR => '/opt/bugzilla';
+    RUN ["git", "clone", -b => $branch // "master", $uri, '/opt/bugzilla'];
+}
+
 sub add_script {
     my ($name) = @_;
     copy("$BASE_DIR/scripts/$name", "$name.tmp") or die "copy failed: $!";
@@ -124,5 +118,4 @@ sub docker_quote {
     $item =~ s/\n/\\n/gs;
     return qq{"$item"};
 }
-
 1;

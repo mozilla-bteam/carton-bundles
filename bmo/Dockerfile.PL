@@ -1,13 +1,8 @@
 use Dockerfile;
 
-FROM 'centos:6';
+FROM 'centos:6.7';
 
-DOCKER_ENV BUGZILLA_GIT => 'git://github.com/dylanwh/bmo.git';
-
-COPY 'rpm_list', '/rpm_list';
-ADD 'https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm',
-    '/usr/local/bin/cpanm';
-RUN 'chmod 755 /usr/local/bin/cpanm';
+COPY ['rpm_list', '/rpm_list'];
 
 RUN q{
     rpm -qa --queryformat '/^%{NAME}$/ d\n' > rpm_fix.sed &&
@@ -20,5 +15,6 @@ RUN q{
     yum clean all
 };
 
+git_clone("git://github.com/dylanwh/bmo.git");
 
 build_tarball();
