@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+foreach my $lib (@ARGV) {
+    my @lines = `nm -D $lib`;
+    chomp @lines;
+
+    my @symbols;
+    foreach my $line (@lines) {
+        my $symbol = (split(/\s+/, $line))[-1];
+        push @symbols, $symbol;
+    }
+    print join(" ", $lib, sort @symbols), "\n";
+}
