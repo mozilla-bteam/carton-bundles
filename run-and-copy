@@ -15,6 +15,9 @@ file=$2
 container=$($DOCKER create -t -i $image)
 if $DOCKER start -a -i $container; then
     $DOCKER cp $container:/vendor.tar.gz $file
+    if [[ -n $SUDO ]]; then
+        sudo chown -c $USER $file
+    fi
     touch $file
     $DOCKER stop $container
     $DOCKER rm -v $container

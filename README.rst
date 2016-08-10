@@ -36,11 +36,11 @@ Linux Users
 -----------
 The scripts and makefile assume they can run "docker" as the current user.
 On linux, docker must typically be run by root. You can instruct the Makefile
-to use "sudo docker" by exporting and environmental variable 'DOCKER'
+to use "sudo docker" by exporting and environmental variable 'SUDO' set to sudo.
 
 .. code-block:: bash
 
-    DOCKER="sudo docker" make ...
+    SUDO="sudo" make ...
 
 
 
@@ -129,7 +129,7 @@ all the CPAN dependencies specified in the cpanfile.
 
 After that, there should be a call to build_tarball(). 
 
-Remember that the vendor bundle is not build when the image is built, but is
+Remember that the vendor bundle is not built when the image is built, but is
 built when the container is run.
 
 cpanfile
@@ -146,13 +146,6 @@ cpanfile.snapshot
 
 If this file is present in the target directory, it will take precedence over
 the one provided in the git repository.
-
-vendor.tar.gz
--------------
-
-If present, this file will be uploaded to the docker image during the build
-process, and will speed up subsequent builds.
-
 
 License
 =======

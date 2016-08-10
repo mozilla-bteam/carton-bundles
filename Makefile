@@ -1,5 +1,5 @@
 # change to sudo docker for linux
-DOCKER = docker 
+DOCKER = $(SUDO) docker 
 BASE_DIR := $(shell pwd)
 PERL5LIB := $(BASE_DIR)/lib
 
@@ -20,7 +20,7 @@ all: $(TARBALLS)
 
 build-%: %/Dockerfile %/.dockerignore $(SCRIPTS)
 	cd $* && $(DOCKER) build -m 2G -t $(IMAGE_TAG) . > build.log
-	docker images -q $@ > $@
+	$(DOCKER) images -q $@ > $@
 
 %/Dockerfile: %/Dockerfile.PL lib/Dockerfile.pm $(SCRIPTS)
 	perl $< > $@

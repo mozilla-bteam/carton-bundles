@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$PERL $CARTON install --cached && \
+$PERL $CARTON install && \
     $PERL $CARTON bundle && \
     $PERL $CARTON fatpack && \
     rm -vfr local/lib/perl5 && \
@@ -21,10 +21,12 @@ $PERL $CARTON install --cached && \
 
 probe-packages > PACKAGES.txt
 probe-libs     > LIBS.txt
+cp /usr/local/bin/scan-libs .
 tar --transform "s@^@$NAME/@" \
     -zcf /vendor.tar.gz \
     PACKAGES.txt \
     LIBS.txt \
+    scan-libs \
     cpanfile \
     cpanfile.snapshot \
     vendor

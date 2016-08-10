@@ -58,16 +58,6 @@ sub build_tarball {
     RUN 'build-vanilla-perl';
     RUN '$PERL /usr/local/bin/cpanm --notest --quiet Carton App::FatPacker File::pushd';
 
-    if (-f 'vendor.tar.gz') {
-        WORKDIR '/opt/vendor';
-        COPY 'vendor.tar.gz', 'vendor.tar.gz';
-        RUN q{
-            tar -xvf vendor.tar.gz &&
-            mv $NAME/vendor $BUGZILLA_DIR/vendor &&
-            rm vendor.tar.gz
-        };
-    }
-
     WORKDIR '$BUGZILLA_DIR';
 
     RUN '$PERL Makefile.PL';
@@ -82,6 +72,7 @@ sub build_tarball {
     COPY 'cpanfile.snapshot', 'cpanfile.snapshot' if -f 'cpanfile.snapshot';
 
     add_script('probe-libs');
+    add_script('scan-libs');
     add_script('probe-packages');
     add_script('build-bundle');
     CMD 'build-bundle';
