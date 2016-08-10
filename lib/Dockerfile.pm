@@ -14,8 +14,9 @@ BEGIN { chdir $FindBin::Bin };
 our $BASE_DIR = realpath("$FindBin::Bin/..");
 our @EXPORT = qw(
     FROM RUN CMD COPY ADD MAINTAINER 
-    DOCKER_ENV build_tarball $BASE_DIR
-    add_script git_clone
+    DOCKER_ENV build_bundle $BASE_DIR
+    WORKDIR
+    add_script prepare_workdir comment
 );
 
 my %env;
@@ -42,13 +43,24 @@ sub WORKDIR ($)    { _CMD 'WORKDIR', @_ }
 sub RUN ($)        { _CMD 'RUN', @_ }
 sub CMD ($)        { _CMD 'CMD', @_ }
 
-sub build_tarball {
-    my $GEN_CPANFILE_ARGS = $ENV{GEN_CPANFILE_ARGS} // '-A -U pg -U oracle -U mod_perl';
+my $prepare_workdir;
+sub prepare_workdir (&) {
+    my ($code) = @_;
+    $prepare_workdir = $code;
+}
 
-    DOCKER_ENV NAME         => basename($FindBin::Bin);
-    DOCKER_ENV PERL_DIR     => '/opt/vanilla-perl';
-    DOCKER_ENV PERL         => '$PERL_DIR/bin/perl';
-    DOCKER_ENV CARTON       => '$PERL_DIR/bin/carton';
+sub comment ($) {
+    my ($comment) = @_;
+    $comment =~ s/^\s*/# /gm;
+    $comment =~ s/\n+$//s;
+    say $comment;
+}
+
+sub build_perl_and_carton {
+    comment "build perl and carton";
+    DOCKER_ENV PERL_DIR => '/opt/vanilla-perl';
+    DOCKER_ENV PERL     => '$PERL_DIR/bin/perl';
+    DOCKER_ENV CARTON   => '$PERL_DIR/bin/carton';
 
     ADD 'https://raw.github.com/tokuhirom/Perl-Build/master/perl-build', '/usr/local/bin/perl-build';
     ADD 'https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm', '/usr/local/bin/cpanm';
@@ -57,8 +69,23 @@ sub build_tarball {
 
     RUN 'build-vanilla-perl';
     RUN '$PERL /usr/local/bin/cpanm --notest --quiet Carton App::FatPacker File::pushd';
+}
 
-    WORKDIR '$BUGZILLA_DIR';
+sub build_bundle {
+    my $GEN_CPANFILE_ARGS = $ENV{GEN_CPANFILE_ARGS} // '-A -U pg -U oracle -U mod_perl';
+
+
+    build_perl_and_carton();
+
+    if ($prepare_workdir) {
+        comment "prepare workdir";
+        my $workdir = $prepare_workdir->();
+        DOCKER_ENV BUGZILLA_DIR => $workdir;
+        WORKDIR $workdir;
+    }
+    else {
+        croak "prepare_workdir is not defined!"
+    }
 
     RUN '$PERL Makefile.PL';
 
@@ -75,13 +102,9 @@ sub build_tarball {
     add_script('scan-libs');
     add_script('probe-packages');
     add_script('build-bundle');
-    CMD 'build-bundle';
-}
 
-sub git_clone {
-    my ($uri, $branch) = @_;
-    DOCKER_ENV BUGZILLA_DIR => '/opt/bugzilla';
-    RUN ["git", "clone", -b => $branch // "master", $uri, '/opt/bugzilla'];
+    DOCKER_ENV NAME => basename($FindBin::Bin);
+    CMD 'build-bundle';
 }
 
 sub add_script {

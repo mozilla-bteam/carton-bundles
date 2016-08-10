@@ -1,5 +1,7 @@
 use Dockerfile;
 
+my $GIT_REPO = "git://github.com/dylanwh/bmo.git";
+
 FROM 'centos:6.7';
 
 COPY ['rpm_list', '/rpm_list'];
@@ -15,6 +17,11 @@ RUN q{
     yum clean all
 };
 
-git_clone("git://github.com/dylanwh/bmo.git");
+prepare_workdir {
+    my $workdir = '/opt/bugzilla';
+    RUN ["git", "clone", $GIT_REPO, $workdir];
 
-build_tarball();
+    return $workdir;
+};
+
+build_bundle();

@@ -5,7 +5,7 @@ $PERL $CARTON install && \
     $PERL $CARTON fatpack && \
     rm -vfr local/lib/perl5 && \
     perl ./vendor/bin/carton install --cached --deployment && \
-    prove -I local/lib/perl5 t || exit 1
+    prove -I local/lib/perl5 t/001compile.t || exit 1
 
 # cpanm --notest -L vendor/cpm App::cpm Carton::Snapshot
 # cat > vendor/bin/cpm <<'CPM'
@@ -29,4 +29,5 @@ tar --transform "s@^@$NAME/@" \
     scan-libs \
     cpanfile \
     cpanfile.snapshot \
+    local \
     vendor
