@@ -22,6 +22,7 @@ prepare_workdir {
     RUN ["git", "clone", "-b", $GIT_BRANCH, $GIT_REPO, $workdir];
     WORKDIR $workdir;
     RUN ["git", "apply", "/list-moreutils.patch"];
+    RUN ["rm", "-f", "t/013dbschema.t"];
 
     return $workdir;
 };

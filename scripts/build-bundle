@@ -22,6 +22,7 @@ $PERL $CARTON install && \
 probe-packages > PACKAGES.txt
 probe-libs     > LIBS.txt
 cp /usr/local/bin/scan-libs .
+rm -vfr local/man
 tar --transform "s@^@$NAME/@" \
     -zcf /vendor.tar.gz \
     PACKAGES.txt \
