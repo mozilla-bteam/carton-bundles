@@ -7,11 +7,11 @@ IMAGE_TAG  = build-$*
 SCRIPTS   := $(wildcard scripts/*)
 
 DIRS     = $(dir $(wildcard */Dockerfile.PL))
-TARBALLS = $(addsuffix vendor.tar.gz,$(DIRS))
+BUNDLES = $(addsuffix vendor.tar.gz,$(DIRS))
 
 export PERL5LIB DOCKER
 
-all: $(TARBALLS)
+all: $(BUNDLES)
 
 -include depends.mk
 
@@ -40,5 +40,10 @@ depends.mk: scan-deps $(git ls-files $(DIRS))
 
 clean_all:
 	rm -vf */Dockerfile */vendor.tar.gz */*.log */*.tmp
+
+upload: $(BUNDLES)
+	for file in $(BUNDLES); do \
+		aws --profile bmocartons s3 cp $$file s3://moz-devservices-bmocartons/$$file; \
+	done
 
 .PHOMY: clean all clean_all
