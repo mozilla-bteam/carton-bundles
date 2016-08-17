@@ -1,7 +1,5 @@
 use Dockerfile;
 
-my $GIT_REPO = "git://github.com/dylanwh/bmo.git";
-
 FROM 'ubuntu:14.04';
 
 RUN qq{
@@ -33,13 +31,6 @@ RUN qq{
         pkg-config
         unzip
         wget
-};
-
-prepare_workdir {
-    my $workdir = '/opt/bugzilla';
-    RUN ["git", "clone", $GIT_REPO, $workdir];
-
-    return $workdir;
 };
 
 build_bundle();

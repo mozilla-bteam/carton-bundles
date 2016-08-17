@@ -1,7 +1,8 @@
 use Dockerfile;
 
-my $GIT_REPO   = "git://github.com/mozilla-bteam/bmo.git";
-my $GIT_BRANCH = "upstream-merge";
+$GIT_REPO   = "git://github.com/mozilla-bteam/bmo.git";
+$GIT_BRANCH = "upstream-merge";
+$GEN_CPANFILE_ARGS = '-A -U pg -U oracle -U mod_perl';
 
 FROM 'centos:7';
 
@@ -15,16 +16,10 @@ RUN q{
     yum clean all
 };
 
-prepare_workdir {
-    my $workdir = '/opt/bugzilla';
-
+after_clone {
     COPY ["list-moreutils.patch", "/list-moreutils.patch"];
-    RUN ["git", "clone", "-b", $GIT_BRANCH, $GIT_REPO, $workdir];
-    WORKDIR $workdir;
     RUN ["git", "apply", "/list-moreutils.patch"];
     RUN ["rm", "-f", "t/013dbschema.t"];
-
-    return $workdir;
 };
 
 build_bundle();

@@ -12,11 +12,20 @@ use v5.10.1;
 BEGIN { chdir $FindBin::Bin };
 
 our $BASE_DIR = realpath("$FindBin::Bin/..");
+our $WORK_DIR = '/opt/bugzilla';
+our $GIT_REPO = 'git://github.com/dylanwh/bmo.git';
+our $GIT_BRANCH = 'bug-1283930';
+our $GEN_CPANFILE_ARGS = '';
+
 our @EXPORT = qw(
     FROM RUN CMD COPY ADD MAINTAINER 
     DOCKER_ENV build_bundle $BASE_DIR
     WORKDIR
-    add_script prepare_workdir comment
+    add_script comment
+    before_clone after_clone
+
+    $WORK_DIR $GIT_REPO $GIT_BRANCH
+    $GEN_CPANFILE_ARGS
 );
 
 my %env;
@@ -43,10 +52,16 @@ sub WORKDIR ($)    { _CMD 'WORKDIR', @_ }
 sub RUN ($)        { _CMD 'RUN', @_ }
 sub CMD ($)        { _CMD 'CMD', @_ }
 
-my $prepare_workdir;
-sub prepare_workdir (&) {
+my $before_clone;
+sub before_clone (&) {
     my ($code) = @_;
-    $prepare_workdir = $code;
+    $before_clone = $code;
+}
+
+my $after_clone;
+sub after_clone (&) {
+    my ($code) = @_;
+    $after_clone = $code;
 }
 
 sub comment ($) {
@@ -72,27 +87,23 @@ sub build_perl_and_carton {
 }
 
 sub build_bundle {
-    my $GEN_CPANFILE_ARGS = $ENV{GEN_CPANFILE_ARGS} // '-A -U pg -U oracle -U mod_perl';
-
-
     build_perl_and_carton();
 
-    if ($prepare_workdir) {
-        comment "prepare workdir";
-        my $workdir = $prepare_workdir->();
-        DOCKER_ENV BUGZILLA_DIR => $workdir;
-        WORKDIR $workdir;
-    }
-    else {
-        croak "prepare_workdir is not defined!"
-    }
+    comment "git clone";
+    $before_clone->() if $before_clone;
+    DOCKER_ENV BUGZILLA_DIR => $WORK_DIR;
+    RUN ["git", "clone", "-b", $GIT_BRANCH, $GIT_REPO, $WORK_DIR];
+    WORKDIR $WORK_DIR;
+    $after_clone->() if $after_clone;
 
     RUN '$PERL Makefile.PL';
 
     if (-f 'cpanfile') {
+        comment "override repository's cpanfile";
         COPY 'cpanfile', 'cpanfile';
     }
-    else {
+    elsif ($GEN_CPANFILE_ARGS) {
+        comment "generate new cpanfile using args";
         RUN "make cpanfile GEN_CPANFILE_ARGS='$GEN_CPANFILE_ARGS'";
     }
 

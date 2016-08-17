@@ -1,7 +1,5 @@
 use Dockerfile;
 
-my $GIT_REPO = "git://github.com/dylanwh/bmo.git";
-
 FROM 'centos:6.7';
 
 COPY ['rpm_list', '/rpm_list'];
@@ -15,13 +13,6 @@ RUN q{
     yum -y install epel-release &&
     yum -y install `cat /rpm_list.clean` &&
     yum clean all
-};
-
-prepare_workdir {
-    my $workdir = '/opt/bugzilla';
-    RUN ["git", "clone", $GIT_REPO, $workdir];
-
-    return $workdir;
 };
 
 build_bundle();
