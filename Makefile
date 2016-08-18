@@ -55,4 +55,4 @@ clean-%:
 %/.dockerignore: .dockerignore
 	cp $< $@
 
-.PHOMY: all clean-% build clean list upload
+.PHONY: all clean-% build clean list upload
