@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if which rpm &>/dev/null; then
+    echo "FORMAT RPM"
+    rpm -qa
+elif which dpkg &>/dev/null; then
+    echo "FORMAT DEB"
+    dpkg --list
+else
+    echo "FORMAT UNKNOWN"
+    exit 1
+fi

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [[ -z $DOCKER ]]; then
+    DOCKER=docker
+fi
+
+if (( $# != 2 )); then
+    echo "usage: $0 image file"
+    exit 1
+fi
+
+image=$1
+file=$2
+
+container=$($DOCKER create -t -i $image)
+if $DOCKER start -a -i $container; then
+    $DOCKER cp $container:/vendor.tar.gz $file
+    if [[ -n $SUDO ]]; then
+        sudo chown -c $USER $file
+    fi
+    touch $file
+    $DOCKER stop $container
+    $DOCKER rm -v $container
+else
+    echo "error in container $container" 1>&2
+    exit 1
+fi
+
+if [[ -f $file ]]; then
+    exit 0
+else
+    exit 1
+fi

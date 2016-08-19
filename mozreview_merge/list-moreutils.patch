@@ -1,0 +1,39 @@
+diff --git a/META.json b/META.json
+index d28c5e7..0d28969 100644
+--- a/META.json
++++ b/META.json
+@@ -411,7 +411,7 @@
+             "JSON::XS" : "2.0",
+             "LWP" : "6",
+             "LWP::UserAgent" : "0",
+-            "List::MoreUtils" : "0.32",
++            "List::MoreUtils" : "< 0.416",
+             "Math::Random::ISAAC" : "v1.0.1",
+             "Regexp::Common" : "0",
+             "Sys::Syslog" : "0",
+diff --git a/META.yml b/META.yml
+index 01d2ee8..c24f6ef 100644
+--- a/META.yml
++++ b/META.yml
+@@ -207,7 +207,7 @@ requires:
+   JSON::XS: '2.0'
+   LWP: '6'
+   LWP::UserAgent: '0'
+-  List::MoreUtils: '0.32'
++  List::MoreUtils: '< 0.416'
+   Math::Random::ISAAC: v1.0.1
+   Regexp::Common: '0'
+   Sys::Syslog: '0'
+diff --git a/Makefile.PL b/Makefile.PL
+index 9d21db7..3e64e0d 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -56,7 +56,7 @@ my %requires = (
+     'Email::Sender'       => '1.300011',
+     'File::Slurp'         => '9999.13',
+     'JSON::XS'            => '2.01',
+-    'List::MoreUtils'     => '0.32',
++    'List::MoreUtils'     => '<0.416',
+     'Math::Random::ISAAC' => '1.0.1',
+     'Template'            => '2.24',
+     'URI'                 => '1.55',

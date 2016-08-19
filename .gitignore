@@ -1,1 +1,8 @@
-bugzilla
+*/Dockerfile
+*/*.tmp
+build-*
+upload-*
+*/*.log
+*/vendor.tar.gz
+*/.dockerignore
+depends.mk

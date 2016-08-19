@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my $ver = $^V;
+$ver =~ s/^v//;
+exec('perl-build', qw(--noman -A ccflags=-fPIC -D useshrplib), $ver, "/opt/vanilla-perl");

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for dir in "$@"; do
+    files="$(git ls-files $dir | grep -v Dockerfile.PL)"
+    echo "$dir"Dockerfile: $files
+done
