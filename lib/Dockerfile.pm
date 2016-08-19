@@ -114,7 +114,8 @@ sub build_bundle {
     add_script('probe-packages');
     add_script('build-bundle');
 
-    DOCKER_ENV NAME => basename($FindBin::Bin);
+    DOCKER_ENV NAME     => basename($FindBin::Bin);
+    DOCKER_ENV PERL5LIB => "$WORK_DIR/local/lib/perl5";
     CMD 'build-bundle';
 }
 
