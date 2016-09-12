@@ -13,8 +13,8 @@ BEGIN { chdir $FindBin::Bin };
 
 our $BASE_DIR = realpath("$FindBin::Bin/..");
 our $WORK_DIR = '/opt/bugzilla';
-our $GIT_REPO = 'git://github.com/dylanwh/bmo.git';
-our $GIT_BRANCH = 'bug-1283930';
+our $GIT_REPO = 'git://github.com/mozilla-bteam/bmo.git';
+our $GIT_BRANCH = 'master';
 our $GEN_CPANFILE_ARGS = '';
 
 our @EXPORT = qw(
@@ -106,8 +106,10 @@ sub build_bundle {
         comment "generate new cpanfile using args";
         RUN "make cpanfile GEN_CPANFILE_ARGS='$GEN_CPANFILE_ARGS'";
     }
-
-    COPY 'cpanfile.snapshot', 'cpanfile.snapshot' if -f 'cpanfile.snapshot';
+    if (-f 'cpanfile.snapshot') {
+        comment "override repository's cpanfile.snapshot";
+        COPY 'cpanfile.snapshot', 'cpanfile.snapshot' 
+    }
 
     add_script('probe-libs');
     add_script('scan-libs');

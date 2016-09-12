@@ -4,6 +4,7 @@ AWS_PROFILE = bmocartons
 DOCKER    = $(SUDO) docker 
 BASE_DIR := $(shell pwd)
 PERL5LIB := $(BASE_DIR)/lib
+VERSION  := $(shell git show --oneline | awk '$$1 {print $$1}')
 
 IMAGE_TAG  = build-$*
 SCRIPTS   := $(wildcard scripts/*)

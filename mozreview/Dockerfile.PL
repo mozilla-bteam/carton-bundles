@@ -19,8 +19,6 @@ RUN qq{
         git
         graphviz
         libapache2-mod-perl2
-        libdaemon-generic-perl
-        libfile-slurp-perl
         libgd-dev
         libgmp3-dev
         libmysqlclient-dev
@@ -31,6 +29,11 @@ RUN qq{
         pkg-config
         unzip
         wget
+};
+
+COPY ["cpanfile.patch", "/cpanfile.patch"];
+after_clone {
+    RUN ["git", "apply", "/cpanfile.patch"];
 };
 
 build_bundle();

@@ -1,0 +1,39 @@
+diff --git a/cpanfile b/cpanfile
+index 51867bd..e4aa52d 100644
+--- a/cpanfile
++++ b/cpanfile
+@@ -10,10 +10,10 @@ requires 'Crypt::DES_EDE3';
+ requires 'Crypt::OpenPGP';
+ requires 'Crypt::SMIME';
+ requires 'DBD::SQLite', '1.29';
+-requires 'DBD::mysql', '==4.022';
++requires 'DBD::mysql', '4.022';
+ requires 'DBI', '==1.622';
+ requires 'Daemon::Generic';
+-requires 'Date::Format', '==2.23';
++requires 'Date::Format', '2.23';
+ requires 'Params::Validate', '==0.95';
+ requires 'DateTime', '==1.03';
+ requires 'DateTime::Locale', '==0.45';
+@@ -42,8 +42,8 @@ requires 'IO::Scalar', '==2.110',
+ requires 'JSON', '==2.50';
+ requires 'JSON::RPC', '==1.01';
+ requires 'JSON::XS', '==2.3';
+-requires 'LWP', '==5.835';
+-requires 'LWP::UserAgent', '==5.835';
++requires 'LWP', '5.835';
++requires 'LWP::UserAgent', '5.835';
+ requires 'Scalar::Util', '==1.21';
+ requires 'List::Util', '==1.21';
+ requires 'List::MoreUtils', '==0.22';
+@@ -68,9 +68,9 @@ requires 'URI', '1.55';
+ requires 'XML::Simple';
+ requires 'XML::Twig';
+ requires 'XMLRPC::Lite';
+-requires 'perl', '5.010001';
+ requires 'version', '0.87';
+ requires 'Safe', '2.30';
++requires 'Linux::Pid';
+ 
+ on configure => sub {
+     requires 'ExtUtils::MakeMaker', '6.57_07';
