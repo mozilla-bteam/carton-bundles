@@ -1,5 +1,5 @@
-ImageMagick-perl
 expat-devel
+wget
 gcc
 gd-devel
 git

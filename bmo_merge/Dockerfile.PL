@@ -2,7 +2,6 @@ use Dockerfile;
 
 $GIT_REPO   = "git://github.com/mozilla-bteam/bmo.git";
 $GIT_BRANCH = "upstream-merge";
-$GEN_CPANFILE_ARGS = '-A -U pg -U oracle -U mod_perl';
 
 FROM 'centos:7';
 
@@ -15,10 +14,14 @@ RUN q{
     yum -y install `cat /rpm_list` &&
     yum clean all
 };
+before_clone {
+    RUN q{echo foo};
+};
 
 after_clone {
-    COPY ["list-moreutils.patch", "/list-moreutils.patch"];
-    RUN ["git", "apply", "/list-moreutils.patch"];
+    # COPY ["list-moreutils.patch", "/list-moreutils.patch"];
+    # RUN ["git", "apply", "/list-moreutils.patch"];
+    RUN ["rm", "-f", "META.json", "META.yml"];
     RUN ["rm", "-f", "t/013dbschema.t"];
 };
 

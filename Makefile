@@ -34,12 +34,20 @@ depends.mk: scan-deps $(git ls-files $(DIRS))
 	@echo TAR $@
 	@./run-and-copy $(IMAGE_TAG) $@ > $*/run.log
 
+%/cpanfile.snapshot: %/vendor.tar.gz
+	tar -zxf $< $@
+
+
+%/cpanfile.original_snapshot: %/vendor.tar.gz
+	tar -zxf $< $@
+
+
 upload-%: %/vendor.tar.gz
 	@echo UPLOAD $<
 	@aws --profile $(AWS_PROFILE) s3 cp $< $(S3_BUCKET)/$<
 	touch $@
 
-build-%: %/Dockerfile %/.dockerignore $(SCRIPTS)
+build-%: %/Dockerfile %/.dockerignore $(SCRIPTS) 
 	@echo BUILD $*
 	@cd $* && $(DOCKER) build -m 2G -t $(IMAGE_TAG) . > build.log
 	@$(DOCKER) images -q $@ > $@

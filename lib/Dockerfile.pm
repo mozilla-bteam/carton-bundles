@@ -15,7 +15,8 @@ our $BASE_DIR = realpath("$FindBin::Bin/..");
 our $WORK_DIR = '/opt/bugzilla';
 our $GIT_REPO = 'git://github.com/mozilla-bteam/bmo.git';
 our $GIT_BRANCH = 'master';
-our $GEN_CPANFILE_ARGS = '';
+our $GEN_CPANFILE_ARGS = '-D bmo';
+our $NAME = basename($FindBin::Bin);
 
 our @EXPORT = qw(
     FROM RUN CMD COPY ADD MAINTAINER 
@@ -23,6 +24,7 @@ our @EXPORT = qw(
     WORKDIR
     add_script comment
     before_clone after_clone
+    patch_cpanfile
 
     $WORK_DIR $GIT_REPO $GIT_BRANCH
     $GEN_CPANFILE_ARGS
@@ -64,6 +66,12 @@ sub after_clone (&) {
     $after_clone = $code;
 }
 
+my $patch_cpanfile;
+sub patch_cpanfile (&) {
+    my ($code) = @_;
+    $patch_cpanfile = $code;
+}
+
 sub comment ($) {
     my ($comment) = @_;
     $comment =~ s/^\s*/# /gm;
@@ -94,6 +102,7 @@ sub build_bundle {
     DOCKER_ENV BUGZILLA_DIR => $WORK_DIR;
     RUN ["git", "clone", "-b", $GIT_BRANCH, $GIT_REPO, $WORK_DIR];
     WORKDIR $WORK_DIR;
+
     $after_clone->() if $after_clone;
 
     RUN '$PERL Makefile.PL';
@@ -102,13 +111,20 @@ sub build_bundle {
         comment "override repository's cpanfile";
         COPY 'cpanfile', 'cpanfile';
     }
-    elsif ($GEN_CPANFILE_ARGS) {
+    else {
         comment "generate new cpanfile using args";
         RUN "make cpanfile GEN_CPANFILE_ARGS='$GEN_CPANFILE_ARGS'";
     }
+
+    $patch_cpanfile->() if $patch_cpanfile;
+
     if (-f 'cpanfile.snapshot') {
         comment "override repository's cpanfile.snapshot";
-        COPY 'cpanfile.snapshot', 'cpanfile.snapshot' 
+        COPY 'cpanfile.snapshot', 'cpanfile.snapshot';
+        COPY 'cpanfile.snapshot', 'cpanfile.original_snapshot';
+    }
+    else {
+        warn "$NAME/Dockerfile.PL: no cpanfile.snapshot!\n";
     }
 
     add_script('probe-libs');
@@ -116,7 +132,7 @@ sub build_bundle {
     add_script('probe-packages');
     add_script('build-bundle');
 
-    DOCKER_ENV NAME     => basename($FindBin::Bin);
+    DOCKER_ENV NAME     => $NAME;
     DOCKER_ENV PERL5LIB => "$WORK_DIR/local/lib/perl5";
     CMD 'build-bundle';
 }

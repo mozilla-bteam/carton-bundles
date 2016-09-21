@@ -1,4 +1,5 @@
 use Dockerfile;
+$GEN_CPANFILE_ARGS='-D bmo';
 
 FROM 'ubuntu:14.04';
 
@@ -31,9 +32,8 @@ RUN qq{
         wget
 };
 
-COPY ["cpanfile.patch", "/cpanfile.patch"];
-after_clone {
-    RUN ["git", "apply", "/cpanfile.patch"];
+patch_cpanfile {
+    RUN q{ echo "requires 'Linux::Pid';" >> cpanfile };
 };
 
 build_bundle();
