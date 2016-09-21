@@ -1,8 +1,15 @@
 #!/bin/bash
 
+mkdir -p ~/.cpanm/work
+pushd ~/.cpanm/work
+wget -Opari-2.1.7.tgz \
+    http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/pari-2.1.7.tgz
+tar -zxvf pari-2.1.7.tgz
+popd
+
 $PERL $CARTON install && \
     wget -Olocal/cache/authors/id/S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz \
-        https://github.com/mozilla-bteam/Crypt-OpenPGP/releases/download/1.13-TRIAL/Crypt-OpenPGP-1.13-TRIAL.tar.gz &&
+        http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/Crypt-OpenPGP-1.13-TRIAL.tar.gz &&
     $PERL $CARTON bundle && \
     $PERL $CARTON fatpack && \
     rm -vfr local/lib/perl5 && \
