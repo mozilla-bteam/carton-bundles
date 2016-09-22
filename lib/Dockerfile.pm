@@ -71,7 +71,10 @@ sub build_perl_and_carton {
     add_script('build-vanilla-perl');
 
     RUN 'build-vanilla-perl';
-    RUN '$PERL /usr/local/bin/cpanm --notest --quiet Carton App::FatPacker File::pushd';
+    RUN q{
+        $PERL /usr/local/bin/cpanm --notest --quiet
+            Carton App::FatPacker File::pushd ExtUtils::MakeMaker
+    };
 }
 
 sub build_bundle {
@@ -80,7 +83,7 @@ sub build_bundle {
     comment "git clone";
     DOCKER_ENV BUGZILLA_DIR => $WORK_DIR;
     DOCKER_ENV GIT_BRANCH   => $GIT_BRANCH;
-    DOCKER_ENV GEN_CPANFILE_FLAGS => $GEN_CPANFILE_ARGS;
+    DOCKER_ENV GEN_CPANFILE_ARGS => $GEN_CPANFILE_ARGS;
     RUN ["git", "clone", "-b", $GIT_BRANCH, $GIT_REPO, $WORK_DIR];
     WORKDIR $WORK_DIR;
 

@@ -2,9 +2,9 @@
 
 mkdir -p ~/.cpanm/work
 pushd ~/.cpanm/work
-wget -Opari-2.1.7.tgz \
+wget -q -Opari-2.1.7.tgz \
     http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/pari-2.1.7.tgz
-tar -zxvf pari-2.1.7.tgz
+tar -zxf pari-2.1.7.tgz
 popd
 
 git fetch
@@ -12,10 +12,12 @@ git reset --hard origin/$GIT_BRANCH
 
 rm -f t/013dbschema.t META.*
 
+rm -vf cpanfile
 $PERL Makefile.PL && make cpanfile GEN_CPANFILE_ARGS="$GEN_CPANFILE_ARGS"
+grep Test::Taint cpanfile || exit 1
 
 $PERL $CARTON install && \
-    wget -Olocal/cache/authors/id/S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz \
+    wget -q -Olocal/cache/authors/id/S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz \
         http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/Crypt-OpenPGP-1.13-TRIAL.tar.gz &&
     $PERL $CARTON bundle && \
     $PERL $CARTON fatpack && \
