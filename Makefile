@@ -14,15 +14,14 @@ BUNDLES = $(addsuffix vendor.tar.gz,$(DIRS))
 
 export PERL5LIB DOCKER SUDO
 
-all: $(BUNDLES)
+list:
+	@for dir in $(DIRS); do \
+		echo $$(basename $$dir); \
+	done
 
 -include depends.mk
 
-list:
-	@for file in $(BUNDLES); do \
-		echo $$file; \
-	done
-
+bundles: $(BUNDLES)
 build: $(patsubst %/,build-%,$(DIRS))
 clean: $(patsubst %/,clean-%,$(DIRS))
 upload: $(patsubst %/,upload-%,$(DIRS))
@@ -39,10 +38,12 @@ depends.mk: scan-deps $(git ls-files $(DIRS))
 %/cpanfile.snapshot: %/vendor.tar.gz
 	@echo GEN $@
 	@tar -zxf $< $@
+	@touch $@
 
 %/cpanfile.original_snapshot: %/vendor.tar.gz
 	@echo GEN $@
 	@tar -zxf $< $@
+	@touch $@
 
 upload-%: %/vendor.tar.gz
 	@echo UPLOAD $<
@@ -66,4 +67,4 @@ clean-%:
 %/.dockerignore: .dockerignore
 	cp $< $@
 
-.PHONY: all clean-% build clean list upload snapshots
+.PHONY: bundles clean-% build clean list upload snapshots

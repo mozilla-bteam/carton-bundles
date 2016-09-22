@@ -1767,7 +1767,7 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Test 1
-      perl 5.008000
+      perl v5.8.0
   Exception-Class-1.40
     pathname: D/DR/DROLSKY/Exception-Class-1.40.tar.gz
     provides:
@@ -4394,6 +4394,7 @@ DISTRIBUTIONS
     requirements:
       Capture::Tiny 0.24
       Data::Dumper 2.126
+      ExtUtils::MakeMaker 0
       Test::More 0.88
       Text::Diff 0.35
   Test-EOL-1.6
@@ -5234,9 +5235,7 @@ DISTRIBUTIONS
       Net::LDAPI 0.04
       Net::LDAPS 0.06
     requirements:
-      Authen::SASL 2.00
       Convert::ASN1 0.2
-      Digest::HMAC_MD5 0
       Digest::MD5 0
       ExtUtils::MakeMaker 6.42
       File::Basename 0
@@ -5246,7 +5245,6 @@ DISTRIBUTIONS
       HTTP::Response 0
       HTTP::Status 0
       IO::File 0
-      IO::Socket::SSL 1.26
       JSON 0
       LWP 0
       LWP::MediaTypes 0
@@ -5256,5 +5254,4 @@ DISTRIBUTIONS
       Text::Soundex 0
       Time::Local 0
       URI::ldap 1.1
-      XML::SAX::Base 0
       perl 5.008001
