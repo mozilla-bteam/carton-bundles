@@ -14,15 +14,5 @@ RUN q{
     yum -y install `cat /rpm_list` &&
     yum clean all
 };
-before_clone {
-    RUN q{echo foo};
-};
-
-after_clone {
-    # COPY ["list-moreutils.patch", "/list-moreutils.patch"];
-    # RUN ["git", "apply", "/list-moreutils.patch"];
-    RUN ["rm", "-f", "META.json", "META.yml"];
-    RUN ["rm", "-f", "t/013dbschema.t"];
-};
 
 build_bundle();

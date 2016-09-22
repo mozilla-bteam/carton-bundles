@@ -7,6 +7,13 @@ wget -Opari-2.1.7.tgz \
 tar -zxvf pari-2.1.7.tgz
 popd
 
+git fetch
+git reset --hard origin/$GIT_BRANCH
+
+rm -f t/013dbschema.t META.*
+
+$PERL Makefile.PL && make cpanfile GEN_CPANFILE_ARGS='-D bmo';
+
 $PERL $CARTON install && \
     wget -Olocal/cache/authors/id/S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz \
         http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/Crypt-OpenPGP-1.13-TRIAL.tar.gz &&

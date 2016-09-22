@@ -1,5 +1,4 @@
 use Dockerfile;
-$GEN_CPANFILE_ARGS='-D bmo';
 
 FROM 'ubuntu:14.04';
 
