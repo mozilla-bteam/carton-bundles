@@ -26,6 +26,8 @@ list:
 build: $(patsubst %/,build-%,$(DIRS))
 clean: $(patsubst %/,clean-%,$(DIRS))
 upload: $(patsubst %/,upload-%,$(DIRS))
+snapshots: $(patsubst %/,%/cpanfile.snapshot,$(DIRS))
+	git add $^
 
 depends.mk: scan-deps $(git ls-files $(DIRS))
 	./scan-deps $(DIRS) > $@
@@ -35,12 +37,12 @@ depends.mk: scan-deps $(git ls-files $(DIRS))
 	@./run-and-copy $(IMAGE_TAG) $@ > $*/run.log
 
 %/cpanfile.snapshot: %/vendor.tar.gz
-	tar -zxf $< $@
-
+	@echo GEN $@
+	@tar -zxf $< $@
 
 %/cpanfile.original_snapshot: %/vendor.tar.gz
-	tar -zxf $< $@
-
+	@echo GEN $@
+	@tar -zxf $< $@
 
 upload-%: %/vendor.tar.gz
 	@echo UPLOAD $<
@@ -64,4 +66,4 @@ clean-%:
 %/.dockerignore: .dockerignore
 	cp $< $@
 
-.PHONY: all clean-% build clean list upload
+.PHONY: all clean-% build clean list upload snapshots
