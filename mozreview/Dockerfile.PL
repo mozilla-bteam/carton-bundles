@@ -31,8 +31,6 @@ RUN qq{
         wget
 };
 
-patch_cpanfile {
-    RUN q{ echo "requires 'Linux::Pid';" >> cpanfile };
-};
+$GEN_CPANFILE_FLAGS = '-D bmo -D linux_pid';
 
 build_bundle();

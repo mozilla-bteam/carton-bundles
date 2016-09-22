@@ -12,7 +12,7 @@ git reset --hard origin/$GIT_BRANCH
 
 rm -f t/013dbschema.t META.*
 
-$PERL Makefile.PL && make cpanfile GEN_CPANFILE_ARGS='-D bmo';
+$PERL Makefile.PL && make cpanfile GEN_CPANFILE_ARGS="$GEN_CPANFILE_ARGS"
 
 $PERL $CARTON install && \
     wget -Olocal/cache/authors/id/S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz \

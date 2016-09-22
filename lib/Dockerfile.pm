@@ -15,6 +15,7 @@ our $BASE_DIR = realpath("$FindBin::Bin/..");
 our $WORK_DIR = '/opt/bugzilla';
 our $GIT_REPO = 'git://github.com/mozilla-bteam/bmo.git';
 our $GIT_BRANCH = 'master';
+our $GEN_CPANFILE_ARGS = '-D bmo';
 our $NAME = basename($FindBin::Bin);
 
 our @EXPORT = qw(
@@ -24,6 +25,7 @@ our @EXPORT = qw(
     add_script comment
 
     $WORK_DIR $GIT_REPO $GIT_BRANCH
+    $GEN_CPANFILE_ARGS
 );
 
 my %env;
@@ -78,6 +80,7 @@ sub build_bundle {
     comment "git clone";
     DOCKER_ENV BUGZILLA_DIR => $WORK_DIR;
     DOCKER_ENV GIT_BRANCH   => $GIT_BRANCH;
+    DOCKER_ENV GEN_CPANFILE_FLAGS => $GEN_CPANFILE_ARGS;
     RUN ["git", "clone", "-b", $GIT_BRANCH, $GIT_REPO, $WORK_DIR];
     WORKDIR $WORK_DIR;
 
