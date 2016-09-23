@@ -39,16 +39,6 @@ depends.mk: scan-deps $(git ls-files $(DIRS))
 	@echo TAR $@
 	@./run-and-copy $(IMAGE_TAG) $@ > $*/run.log
 
-%/cpanfile.snapshot: %/vendor.tar.gz
-	@echo GEN $@
-	@tar -zxf $< $@
-	@touch $@
-
-%/cpanfile.original_snapshot: %/vendor.tar.gz
-	@echo GEN $@
-	@tar -zxf $< $@
-	@touch $@
-
 upload-%: %/vendor.tar.gz
 	@echo UPLOAD $<
 	@aws --profile $(AWS_PROFILE) s3 cp $< $(S3_BUCKET)/$<
