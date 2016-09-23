@@ -136,7 +136,7 @@ cpanfile
 --------
 
 If there is no cpanfile, build_tarball() will build one by running Makefile.PL && make cpanfile.
-The list of features compiled in can be controlled with a docker environmental variable GEN_CPANFILE_FLAGS.
+The list of features compiled in can be controlled with a docker environmental variable GEN_CPANFILE_ARGS.
 
 Alternatively, if a cpanfile is present in the target directory, it will be copied
 into the $BUGZILLA_GIT checkout during the image build.

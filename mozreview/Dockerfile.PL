@@ -31,6 +31,6 @@ RUN qq{
         wget
 };
 
-$GEN_CPANFILE_FLAGS = '-D bmo -D linux_pid';
+$GEN_CPANFILE_ARGS = '-D bmo -D linux_pid';
 
 build_bundle();

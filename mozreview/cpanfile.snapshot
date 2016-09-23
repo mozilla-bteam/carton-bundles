@@ -1818,6 +1818,14 @@ DISTRIBUTIONS
       IO::CaptureOutput 1.0801
       Test::More 0.62
       perl 5.00405
+  Devel-Cycle-1.12
+    pathname: L/LD/LDS/Devel-Cycle-1.12.tar.gz
+    provides:
+      Devel::Cycle 1.12
+    requirements:
+      ExtUtils::MakeMaker 0
+      Scalar::Util 0
+      Test::More 0
   Devel-GlobalDestruction-0.13
     pathname: H/HA/HAARG/Devel-GlobalDestruction-0.13.tar.gz
     provides:
@@ -2419,15 +2427,25 @@ DISTRIBUTIONS
     provides:
       HTML::Scrubber 0.15
     requirements:
+      Carp 0
+      File::Spec 0
+      File::Temp 0
       HTML::Entities 0
       HTML::Parser 3.47
+      IO::Handle 0
+      IPC::Open3 0
       Module::Build 0.28
       Scalar::Util 0
+      Test 0
       Test::CPAN::Meta 0
       Test::EOL 0
+      Test::Memory::Cycle 0
+      Test::More 0.94
       Test::NoTabs 0
+      blib 1.01
       perl 5.008
       strict 0
+      utf8 0
       warnings 0
   HTML-Tagset-3.20
     pathname: P/PE/PETDANCE/HTML-Tagset-3.20.tar.gz
@@ -2670,6 +2688,12 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       common::sense 0
+  Linux-Pid-0.04
+    pathname: R/RG/RGARCIA/Linux-Pid-0.04.tar.gz
+    provides:
+      Linux::Pid 0.04
+    requirements:
+      ExtUtils::MakeMaker 0
   List-MoreUtils-0.22
     pathname: V/VP/VPARSEVAL/List-MoreUtils-0.22.tar.gz
     provides:
@@ -3190,6 +3214,13 @@ DISTRIBUTIONS
       XSLoader 0
       strict 0
       warnings 0
+  PadWalker-2.2
+    pathname: R/RO/ROBIN/PadWalker-2.2.tar.gz
+    provides:
+      PadWalker 2.2
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.008001
   Params-Util-1.07
     pathname: A/AD/ADAMK/Params-Util-1.07.tar.gz
     provides:
@@ -3840,6 +3871,19 @@ DISTRIBUTIONS
       Test::Harness 3.36
     requirements:
       ExtUtils::MakeMaker 0
+  Test-Memory-Cycle-1.06
+    pathname: P/PE/PETDANCE/Test-Memory-Cycle-1.06.tar.gz
+    provides:
+      Test::Memory::Cycle 1.06
+    requirements:
+      Devel::Cycle 1.07
+      ExtUtils::MakeMaker 0
+      Getopt::Long 0
+      PadWalker 0
+      Test::Builder 0
+      Test::Builder::Tester 0
+      Test::More 0
+      Test::Simple 0.62
   Test-NoTabs-1.4
     pathname: B/BO/BOBTFISH/Test-NoTabs-1.4.tar.gz
     provides:
