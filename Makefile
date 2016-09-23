@@ -25,8 +25,12 @@ bundles: $(BUNDLES)
 build: $(patsubst %/,build-%,$(DIRS))
 clean: $(patsubst %/,clean-%,$(DIRS))
 upload: $(patsubst %/,upload-%,$(DIRS))
-snapshots: $(patsubst %/,%/cpanfile.snapshot,$(DIRS))
-	git add $^
+snapshots: $(BUNDLES)
+	for bundle in $(BUNDLES); do \
+		file="$$(dirname $$bundle)/cpanfile.snapshot"; \
+		tar -zxf $$bundle $$file; \
+		git add $$file; \
+	done
 
 depends.mk: scan-deps $(git ls-files $(DIRS))
 	./scan-deps $(DIRS) > $@

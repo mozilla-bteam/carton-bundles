@@ -224,25 +224,14 @@ DISTRIBUTIONS
       CPAN::Meta::Requirements 2.121
       CPAN::Meta::YAML 0.011
       Carp 0
-      Data::Dumper 0
       Encode 0
       Exporter 0
       ExtUtils::MakeMaker 6.17
-      File::Basename 0
       File::Spec 0.80
-      File::Spec::Functions 0
-      File::Temp 0.20
-      IO::Dir 0
       JSON::PP 2.27300
       Scalar::Util 0
-      Storable 0
-      Test::More 0.88
-      lib 0
-      overload 0
       perl 5.008001
       strict 0
-      utf8 0
-      vars 0
       version 0.88
       warnings 0
   CPAN-Meta-Requirements-2.140
@@ -253,8 +242,6 @@ DISTRIBUTIONS
       B 0
       Carp 0
       ExtUtils::MakeMaker 6.17
-      File::Spec 0
-      Test::More 0.88
       perl 5.006
       strict 0
       version 0.88
@@ -269,21 +256,9 @@ DISTRIBUTIONS
       Exporter 0
       ExtUtils::MakeMaker 6.17
       Fcntl 0
-      File::Basename 0
-      File::Find 0
-      File::Spec 0
-      File::Spec::Functions 0
-      File::Temp 0.19
-      IO::Dir 0
-      JSON::PP 0
       Scalar::Util 0
-      Test::More 0.88
-      base 0
-      lib 0
       perl 5.008001
       strict 0
-      utf8 0
-      vars 0
       warnings 0
   Cache-Memcached-Fast-0.23
     pathname: K/KR/KROKI/Cache-Memcached-Fast-0.23.tar.gz
@@ -1793,10 +1768,6 @@ DISTRIBUTIONS
     requirements:
       Data::Dumper 0
       ExtUtils::MakeMaker 6.30
-      File::Spec 0
-      IO::Handle 0
-      IPC::Open3 0
-      Test::More 0.88
       strict 0
       warnings 0
   ExtUtils-Helpers-0.026
@@ -1808,15 +1779,12 @@ DISTRIBUTIONS
       ExtUtils::Helpers::Windows 0.026
     requirements:
       Carp 0
-      Cwd 0
       Exporter 5.57
       ExtUtils::MakeMaker 0
       File::Basename 0
       File::Copy 0
       File::Spec::Functions 0
-      Test::More 0
       Text::ParseWords 3.24
-      lib 0
       perl 5.006
       strict 0
       warnings 0
@@ -1829,11 +1797,6 @@ DISTRIBUTIONS
       ExtUtils::Config 0.002
       ExtUtils::MakeMaker 0
       File::Spec 0
-      File::Spec::Functions 0.83
-      File::Temp 0
-      IO::Handle 0
-      IPC::Open3 0
-      Test::More 0
       perl 5.006
       strict 0
       warnings 0
@@ -3842,8 +3805,6 @@ DISTRIBUTIONS
       Hash::MultiValue 0.05
       Pod::Usage 1.36
       Stream::Buffered 0.02
-      Test::More 0.88
-      Test::Requires 0
       Test::TCP 2.00
       Try::Tiny 0
       URI 1.59
@@ -4501,15 +4462,6 @@ DISTRIBUTIONS
       Test::More 0
       strict 0
       warnings 0
-  Test-Requires-0.10
-    pathname: T/TO/TOKUHIROM/Test-Requires-0.10.tar.gz
-    provides:
-      Test::Requires 0.10
-    requirements:
-      ExtUtils::MakeMaker 6.64
-      Test::Builder::Module 0
-      Test::More 0.47
-      perl 5.006
   Test-SharedFork-0.35
     pathname: E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
     provides:
