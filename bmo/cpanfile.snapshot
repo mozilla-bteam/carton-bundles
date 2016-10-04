@@ -716,20 +716,20 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.006
-  DBD-mysql-4.022
-    pathname: C/CA/CAPTTOFU/DBD-mysql-4.022.tar.gz
+  DBD-mysql-4.037
+    pathname: M/MI/MICHIELB/DBD-mysql-4.037.tar.gz
     provides:
-      Bundle::DBD::mysql 4.004
-      DBD::mysql 4.022
+      Bundle::DBD::mysql 4.037
+      DBD::mysql 4.037
       DBD::mysql::GetInfo undef
-      DBD::mysql::db 4.022
-      DBD::mysql::dr 4.022
-      DBD::mysql::st 4.022
+      DBD::mysql::db 4.037
+      DBD::mysql::dr 4.037
+      DBD::mysql::st 4.037
     requirements:
-      DBI 1.08
+      DBI 1.609
       Data::Dumper 0
-      Test::More 0
-      perl 5.005
+      ExtUtils::MakeMaker 0
+      perl 5.008001
   DBI-1.622
     pathname: T/TI/TIMB/DBI-1.622.tar.gz
     provides:
