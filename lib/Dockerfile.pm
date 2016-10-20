@@ -14,7 +14,7 @@ BEGIN { chdir $FindBin::Bin };
 our $BASE_DIR = realpath("$FindBin::Bin/..");
 our $WORK_DIR = '/opt/bugzilla';
 our $GIT_REPO = 'git://github.com/mozilla-bteam/bmo.git';
-our $GIT_BRANCH = 'master';
+our $GIT_BRANCH = 'carton';
 our $GEN_CPANFILE_ARGS = '-D bmo';
 our $NAME = basename($FindBin::Bin);
 
