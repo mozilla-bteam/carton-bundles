@@ -1,5 +1,8 @@
 #!/bin/bash
 
-$PERL Makefile.PL
-$PERL Makefile.PL && make cpanfile GEN_CPANFILE_ARGS="$GEN_CPANFILE_ARGS"
-$PERL $CARTON update "$@"
+set -e
+wget $S3_BUCKET_URI/bmo/vendor.tar.gz -O /vendor.tar.gz
+tar --transform 's/bmo\///' -zxvf /vendor.tar.gz
+perl vendor/bin/carton install --cached --deployment
+perl vendor/bin/carton update "$@"
+package-bundle

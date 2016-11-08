@@ -101,8 +101,10 @@ sub build_bundle {
     add_script('probe-packages');
     add_script('build-bundle');
     add_script('update-modules');
+    add_script('package-bundle');
 
     DOCKER_ENV NAME     => $NAME;
+    DOCKER_ENV S3_BUCKET_URI => $ENV{S3_BUCKET_URI} if $ENV{S3_BUCKET_URI};
     DOCKER_ENV PERL5LIB => "$WORK_DIR/local/lib/perl5";
     CMD 'build-bundle';
 }

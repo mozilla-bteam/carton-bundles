@@ -1,4 +1,5 @@
-S3_BUCKET   = s3://moz-devservices-bmocartons
+S3_BUCKET   = moz-devservices-bmocartons
+S3_BUCKET_URI = https://$(S3_BUCKET).s3.amazonaws.com
 AWS_PROFILE = bmocartons
 
 DOCKER    = $(SUDO) docker 
@@ -12,7 +13,7 @@ SCRIPTS   := $(wildcard scripts/*)
 DIRS     = $(dir $(wildcard */Dockerfile.PL))
 BUNDLES = $(addsuffix vendor.tar.gz,$(DIRS))
 
-export PERL5LIB DOCKER SUDO
+export PERL5LIB DOCKER SUDO S3_BUCKET_URI
 
 list:
 	@for dir in $(DIRS); do \
@@ -41,7 +42,7 @@ depends.mk: scan-deps $(git ls-files $(DIRS))
 
 upload-%: %/vendor.tar.gz
 	@echo UPLOAD $<
-	@aws --profile $(AWS_PROFILE) s3 cp $< $(S3_BUCKET)/$<
+	@aws --profile $(AWS_PROFILE) s3 cp $< s3://$(S3_BUCKET)/$<
 	touch $@
 
 build-%: %/Dockerfile %/.dockerignore $(SCRIPTS) 

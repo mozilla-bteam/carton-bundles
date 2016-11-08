@@ -25,16 +25,4 @@ $PERL $CARTON install && \
     perl ./vendor/bin/carton install --cached --deployment && \
     prove -I local/lib/perl5 t/001compile.t || exit 1
 
-probe-packages > PACKAGES.txt
-probe-libs     > LIBS.txt
-cp /usr/local/bin/scan-libs .
-rm -vfr local/man local/cache
-tar --transform "s@^@$NAME/@" \
-    -zcf /vendor.tar.gz \
-    PACKAGES.txt \
-    LIBS.txt \
-    scan-libs \
-    cpanfile \
-    cpanfile.* \
-    local \
-    vendor
+package-bundle
