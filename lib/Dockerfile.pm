@@ -100,6 +100,7 @@ sub build_bundle {
     add_script('scan-libs');
     add_script('probe-packages');
     add_script('build-bundle');
+    add_script('update-modules');
 
     DOCKER_ENV NAME     => $NAME;
     DOCKER_ENV PERL5LIB => "$WORK_DIR/local/lib/perl5";

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+$PERL Makefile.PL
+$PERL Makefile.PL && make cpanfile GEN_CPANFILE_ARGS="$GEN_CPANFILE_ARGS"
+$PERL $CARTON update "$@"

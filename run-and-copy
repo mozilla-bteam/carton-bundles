@@ -1,33 +1,44 @@
-#!/bin/bash
+#!/usr/bin/perl
+use strict;
+use warnings;
+use 5.10.1;
+use Getopt::Long qw(:config gnu_getopt);
+use IPC::Run3;
 
-if [[ -z $DOCKER ]]; then
-    DOCKER=docker
-fi
+my ($image_tag, $cmd, @args);
+GetOptions(
+    'image|i=s' => \$image_tag,
+    'cmd|c=s'   => \$cmd,
+    'arg|a=s@'  => \@args,
+);
+my ($from, $to) = @ARGV;
 
-if (( $# != 2 )); then
-    echo "usage: $0 image file"
-    exit 1
-fi
+unless ($cmd && $image_tag && $from && $to) {
+    die "$0 --image TAG --cmd CMD\n";
+}
 
-image=$1
-file=$2
+my @docker_cmd = grep { length } split(/\s+/, $ENV{DOCKER} // 'docker');
+my $container = '';
+run3 [@docker_cmd, 'create', '-t', '-i', $image_tag, $cmd, @args], undef, \$container;
+chomp $container;
 
-container=$($DOCKER create -t -i $image)
-if $DOCKER start -a -i $container; then
-    $DOCKER cp $container:/vendor.tar.gz $file
-    if [[ -n $SUDO ]]; then
-        sudo chown -c $USER $file
-    fi
-    touch $file
-    $DOCKER stop $container
-    $DOCKER rm -v $container
-else
-    echo "error in container $container" 1>&2
-    exit 1
-fi
+if (system(@docker_cmd, 'start', '-a', '-i', $container) == 0) {
+    system(@docker_cmd, 'cp', "$container:$from", $to);
+    if ($ENV{SUDO}) {
+        system('sudo', 'chown', '-c', $ENV{USER}, $to);
+    }
+    system('touch', $to);
+    system(@docker_cmd, 'stop', $container);
+    system(@docker_cmd, 'rm', $container);
+}
+else {
+    die "error in container: $container\n";
+}
 
-if [[ -f $file ]]; then
+if (-f $to) {
+    say "Copied $from to $to";
     exit 0
-else
-    exit 1
-fi
+}
+else {
+    exit 1;
+}

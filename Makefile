@@ -37,7 +37,7 @@ depends.mk: scan-deps $(git ls-files $(DIRS))
 
 %/vendor.tar.gz: build-%
 	@echo TAR $@
-	@./run-and-copy $(IMAGE_TAG) $@ > $*/run.log
+	@./run-and-copy --image "$(IMAGE_TAG)" --cmd build-bundle /vendor.tar.gz $@ > $*/run.log
 
 upload-%: %/vendor.tar.gz
 	@echo UPLOAD $<
