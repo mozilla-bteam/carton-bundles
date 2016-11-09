@@ -2730,18 +2730,14 @@ DISTRIBUTIONS
       re 0
       strict 0
       warnings 0
-  JSON-2.50
-    pathname: M/MA/MAKAMAKA/JSON-2.50.tar.gz
+  JSON-2.90
+    pathname: M/MA/MAKAMAKA/JSON-2.90.tar.gz
     provides:
-      JSON 2.50
-      JSON::Backend::PP 2.50
-      JSON::Boolean 2.50
-      JSON::PP 2.27008
-      JSON::PP::IncrParser 2.27008
-      JSON::backportPP::Boolean 2.27008
+      JSON 2.90
+      JSON::Backend::PP 2.90
+      JSON::Boolean 2.90
     requirements:
       ExtUtils::MakeMaker 0
-      JSON::XS 2.27
       Test::More 0
   JSON-PP-2.27400
     pathname: M/MA/MAKAMAKA/JSON-PP-2.27400.tar.gz
