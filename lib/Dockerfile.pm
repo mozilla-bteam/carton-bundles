@@ -4,13 +4,17 @@ use warnings;
 use base qw(Exporter);
 use Carp;
 use Cwd 'realpath';
+use File::Spec;
 use File::Copy 'copy';
 use File::Basename;
+use File::Path qw(make_path);
 use FindBin;
 use v5.10.1;
 
 BEGIN { chdir $FindBin::Bin };
 
+our $THIS_DIR = realpath($FindBin::Bin);
+our $COPY_DIR = File::Spec->catfile($THIS_DIR, "copy");
 our $BASE_DIR = realpath("$FindBin::Bin/..");
 our $WORK_DIR = '/opt/bugzilla';
 our $GIT_REPO = 'git://github.com/mozilla-bteam/bmo.git';
@@ -22,7 +26,9 @@ our @EXPORT = qw(
     FROM RUN CMD COPY ADD MAINTAINER 
     DOCKER_ENV build_bundle $BASE_DIR
     WORKDIR
-    add_script comment
+
+    copy_from_base
+    run_script comment
 
     $WORK_DIR $GIT_REPO $GIT_BRANCH
     $GEN_CPANFILE_ARGS
@@ -68,9 +74,7 @@ sub build_perl_and_carton {
     ADD 'https://raw.github.com/tokuhirom/Perl-Build/master/perl-build', '/usr/local/bin/perl-build';
     ADD 'https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm', '/usr/local/bin/cpanm';
     RUN 'chmod a+x /usr/local/bin/perl-build /usr/local/bin/cpanm';
-    add_script('build-vanilla-perl');
-
-    RUN 'build-vanilla-perl';
+    run_script('build-vanilla-perl');
     RUN q{
         $PERL /usr/local/bin/cpanm --notest --quiet
             Carton App::FatPacker File::pushd ExtUtils::MakeMaker
@@ -96,12 +100,17 @@ sub build_bundle {
         warn "$NAME/Dockerfile.PL: no cpanfile.snapshot!\n";
     }
 
-    add_script('probe-libs');
-    add_script('scan-libs');
-    add_script('probe-packages');
-    add_script('build-bundle');
-    add_script('update-modules');
-    add_script('package-bundle');
+    my @scripts = (
+        'probe-libs',
+        'scan-libs',
+        'probe-packages',
+        'build-bundle',
+        'update-modules',
+        'package-bundle',
+        'fetch-pari',
+    );
+    copy_from_base("scripts/$_", "/usr/local/bin/$_") for @scripts;
+    RUN ["chmod", "a+x", map { "/usr/local/bin/$_" } @scripts];
 
     DOCKER_ENV NAME     => $NAME;
     DOCKER_ENV S3_BUCKET_URI => $ENV{S3_BUCKET_URI} if $ENV{S3_BUCKET_URI};
@@ -109,11 +118,25 @@ sub build_bundle {
     CMD 'build-bundle';
 }
 
-sub add_script {
+sub copy_from_base {
+    my ($src, $dest) = @_;
+    comment "copy \$BASE_DIR/$src to $dest";
+
+    my $src_path = File::Spec->catfile($BASE_DIR, $src);
+    my $tmp_path = File::Spec->catfile($COPY_DIR, $src);
+
+    make_path(dirname($tmp_path));
+    copy($src_path, $tmp_path)
+        or die "copy failed: $! $src_path -> $tmp_path";
+    COPY [File::Spec->abs2rel($tmp_path), $dest];
+}
+
+sub run_script {
     my ($name) = @_;
-    copy("$BASE_DIR/scripts/$name", "$name.tmp") or die "copy failed: $!";
-    COPY "$name.tmp", "/usr/local/bin/$name";
-    RUN "chmod a+x /usr/local/bin/$name";
+    my $script = "/usr/local/bin/$name";
+    copy_from_base("scripts/$name", $script);
+    RUN ["chmod", "755", $script];
+    RUN [$script];
 }
 
 sub docker_arg {

@@ -1,11 +1,8 @@
 #!/bin/bash
 
-mkdir -p ~/.cpanm/work
-pushd ~/.cpanm/work
-wget -q -Opari-2.1.7.tgz \
-    http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/pari-2.1.7.tgz
-tar -zxf pari-2.1.7.tgz
-popd
+set -e
+
+fetch-pari
 
 git fetch
 git reset --hard origin/$GIT_BRANCH

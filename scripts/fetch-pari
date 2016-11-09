@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+mkdir -p ~/.cpanm/work
+cd ~/.cpanm/work
+wget -q -Opari-2.1.7.tgz \
+    http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/pari-2.1.7.tgz
+tar -zxf pari-2.1.7.tgz
