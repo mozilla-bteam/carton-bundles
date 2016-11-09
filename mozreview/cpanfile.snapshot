@@ -462,7 +462,7 @@ DISTRIBUTIONS
   Crypt-OpenPGP-1.12
     pathname: S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz
     provides:
-      Crypt::OpenPGP 1.12
+      Crypt::OpenPGP 1.13
       Crypt::OpenPGP::Armour undef
       Crypt::OpenPGP::Buffer undef
       Crypt::OpenPGP::CFB undef
@@ -2599,7 +2599,6 @@ DISTRIBUTIONS
       IO::Socket::SSL::Utils 2.014
     requirements:
       ExtUtils::MakeMaker 0
-      Mozilla::CA 0
       Net::SSLeay 1.46
       Scalar::Util 0
   IO-stringy-2.111
@@ -2633,15 +2632,12 @@ DISTRIBUTIONS
       re 0
       strict 0
       warnings 0
-  JSON-2.50
-    pathname: M/MA/MAKAMAKA/JSON-2.50.tar.gz
+  JSON-2.90
+    pathname: M/MA/MAKAMAKA/JSON-2.90.tar.gz
     provides:
-      JSON 2.50
-      JSON::Backend::PP 2.50
-      JSON::Boolean 2.50
-      JSON::PP 2.27008
-      JSON::PP::IncrParser 2.27008
-      JSON::backportPP::Boolean 2.27008
+      JSON 2.90
+      JSON::Backend::PP 2.90
+      JSON::Boolean 2.90
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0
@@ -2686,13 +2682,14 @@ DISTRIBUTIONS
       Router::Simple 0
       Test::More 0
       parent 0
-  JSON-XS-2.3
-    pathname: M/ML/MLEHMANN/JSON-XS-2.3.tar.gz
+  JSON-XS-3.02
+    pathname: M/ML/MLEHMANN/JSON-XS-3.02.tar.gz
     provides:
-      JSON::XS 2.3
-      JSON::XS::Boolean 2.3
+      JSON::XS 3.02
     requirements:
-      ExtUtils::MakeMaker 0
+      Canary::Stability 0
+      ExtUtils::MakeMaker 6.52
+      Types::Serialiser 0
       common::sense 0
   Lexical-SealRequireHints-0.010
     pathname: Z/ZE/ZEFRAM/Lexical-SealRequireHints-0.010.tar.gz
@@ -4198,6 +4195,16 @@ DISTRIBUTIONS
       Exporter::Tiny 0.026
       ExtUtils::MakeMaker 6.17
       perl 5.006001
+  Types-Serialiser-1.0
+    pathname: M/ML/MLEHMANN/Types-Serialiser-1.0.tar.gz
+    provides:
+      JSON::PP::Boolean 1.0
+      Types::Serialiser 1.0
+      Types::Serialiser::BooleanBase 1.0
+      Types::Serialiser::Error 1.0
+    requirements:
+      ExtUtils::MakeMaker 0
+      common::sense 0
   URI-1.71
     pathname: E/ET/ETHER/URI-1.71.tar.gz
     provides:
