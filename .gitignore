@@ -1,5 +1,6 @@
 */Dockerfile
 */*.tmp
+*/copy
 build-*
 upload-*
 */*.log

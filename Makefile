@@ -52,7 +52,7 @@ build-%: %/Dockerfile %/.dockerignore $(SCRIPTS)
 
 clean-%:
 	@echo CLEAN $*
-	@rm -vf $*/Dockerfile $*/vendor.tar.gz $*/*.log $*/*.tmp
+	@rm -vf $*/Dockerfile $*/vendor.tar.gz $*/*.log $*/copy
 
 %/Dockerfile: %/Dockerfile.PL lib/Dockerfile.pm $(SCRIPTS)
 	perl $< > $@

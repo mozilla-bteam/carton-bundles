@@ -1,8 +1,8 @@
 #!/bin/bash
 
 set -e
-wget $S3_BUCKET_URI/bmo/vendor.tar.gz -O /vendor.tar.gz
-tar --transform 's/bmo\///' -zxvf /vendor.tar.gz
+wget $S3_BUCKET_URI/$NAME/vendor.tar.gz -O /vendor.tar.gz
+tar --transform "s,$NAME/,," -zxvf /vendor.tar.gz
 perl vendor/bin/carton install --cached --deployment
 perl vendor/bin/carton update "$@"
 package-bundle
