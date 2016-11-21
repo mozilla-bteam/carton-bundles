@@ -2326,38 +2326,32 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0
-  JSON-RPC-1.06
-    pathname: D/DM/DMAKI/JSON-RPC-1.06.tar.gz
+  JSON-RPC-1.01
+    pathname: D/DM/DMAKI/JSON-RPC-1.01.tar.gz
     provides:
-      JSON::RPC 1.06
+      JSON::RPC 1.01
       JSON::RPC::Constants undef
       JSON::RPC::Dispatch undef
       JSON::RPC::Legacy undef
-      JSON::RPC::Legacy::Client 1.06
-      JSON::RPC::Legacy::Procedure 1.06
-      JSON::RPC::Legacy::ReturnObject 0
-      JSON::RPC::Legacy::Server 1.06
-      JSON::RPC::Legacy::Server::Apache 1.06
-      JSON::RPC::Legacy::Server::Apache2 undef
-      JSON::RPC::Legacy::Server::CGI 1.06
-      JSON::RPC::Legacy::Server::Daemon 1.06
-      JSON::RPC::Legacy::Server::system undef
-      JSON::RPC::Legacy::ServiceObject undef
+      JSON::RPC::Legacy::Client 0.93
+      JSON::RPC::Legacy::Procedure 0.90
+      JSON::RPC::Legacy::ReturnObject 0.93
+      JSON::RPC::Legacy::Server 0.92
+      JSON::RPC::Legacy::Server::Apache2 0.05
+      JSON::RPC::Legacy::Server::CGI 0.92
+      JSON::RPC::Legacy::Server::Daemon 0.03
+      JSON::RPC::Legacy::Server::system 0.92
+      JSON::RPC::Legacy::ServiceObject 0.93
       JSON::RPC::Parser undef
       JSON::RPC::Procedure undef
-      JSON::RPC::Test undef
     requirements:
       CGI 0
-      CPAN::Meta 0
-      CPAN::Meta::Prereqs 0
       Class::Accessor::Lite 0
-      ExtUtils::CBuilder 0
-      ExtUtils::MakeMaker 6.36
+      ExtUtils::MakeMaker 6.42
       HTTP::Request 0
       HTTP::Response 0
       JSON 0
       LWP::UserAgent 0
-      Module::Build 0.38
       Plack 0
       Plack::Request 0
       Plack::Test 0

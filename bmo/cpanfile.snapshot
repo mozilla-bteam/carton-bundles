@@ -164,28 +164,6 @@ DISTRIBUTIONS
       Scalar::Util 1.21
       Test::More 0.98
       perl 5.006000
-  CGI.pm-3.51
-    pathname: M/MA/MARKSTOS/CGI.pm-3.51.tar.gz
-    provides:
-      CGI 3.51
-      CGI::Apache 1.01
-      CGI::Carp 3.51
-      CGI::Cookie 1.30
-      CGI::Fast 1.08
-      CGI::Pretty 3.46
-      CGI::Push 1.05
-      CGI::Switch 1.01
-      CGI::Util 3.51
-      CGITempFile 3.51
-      Fh 3.51
-      MultipartBuffer 3.51
-      utf8 3.51
-    requirements:
-      ExtUtils::MakeMaker 0
-      FCGI 0.67
-      File::Spec 0.82
-      Test::More 0.8
-      perl 5.006000
   CPAN-Meta-2.150005
     pathname: D/DA/DAGOLDEN/CPAN-Meta-2.150005.tar.gz
     provides:
@@ -220,6 +198,20 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       version 0.88
+      warnings 0
+  CPAN-Meta-YAML-0.018
+    pathname: D/DA/DAGOLDEN/CPAN-Meta-YAML-0.018.tar.gz
+    provides:
+      CPAN::Meta::YAML 0.018
+    requirements:
+      B 0
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      Scalar::Util 0
+      perl 5.008001
+      strict 0
       warnings 0
   Cache-Memcached-Fast-0.23
     pathname: K/KR/KROKI/Cache-Memcached-Fast-0.23.tar.gz
@@ -482,7 +474,7 @@ DISTRIBUTIONS
   Crypt-OpenPGP-1.12
     pathname: S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz
     provides:
-      Crypt::OpenPGP 1.13
+      Crypt::OpenPGP 1.12
       Crypt::OpenPGP::Armour undef
       Crypt::OpenPGP::Buffer undef
       Crypt::OpenPGP::CFB undef
@@ -2311,15 +2303,6 @@ DISTRIBUTIONS
       ExtUtils::PkgConfig 1.15
     requirements:
       ExtUtils::MakeMaker 0
-  FCGI-0.78
-    pathname: E/ET/ETHER/FCGI-0.78.tar.gz
-    provides:
-      FCGI 0.78
-      FCGI::Stream 0.78
-    requirements:
-      ExtUtils::MakeMaker 0
-      XSLoader 0
-      perl 5.006
   File-BaseDir-0.07
     pathname: K/KI/KIMRYAN/File-BaseDir-0.07.tar.gz
     provides:
