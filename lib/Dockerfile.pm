@@ -140,8 +140,11 @@ sub run_script {
 }
 
 sub docker_arg {
+    use Carp;
     my ($item, $keyword) = @_;
     my $prefix = ' ' x (length($keyword) + 1);
+
+    croak "foo\n" if not $item;
     $item =~ s/^\s+//gs;
     $item =~ s/\s+$//gs;
     $item =~ s/\n[ \t]*/ \\\n$prefix/gs;
