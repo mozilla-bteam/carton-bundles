@@ -15,10 +15,6 @@ BUNDLES  = $(addsuffix vendor.tar.gz,$(DIRS))
 
 export PERL5LIB DOCKER SUDO S3_BUCKET_URI
 
-info:
-	@echo S3_BUCKET: $(S3_BUCKET)
-	@echo S3_BUCKET_URI: $(S3_BUCKET_URI)
-
 list:
 	@for dir in $(DIRS); do \
 		echo $$(basename $$dir); \
@@ -42,7 +38,7 @@ depends.mk: scan-deps $(git ls-files $(DIRS))
 
 %/vendor.tar.gz: build-%
 	@echo TAR $@
-	@./run-and-copy --image "$(IMAGE_TAG)" --cmd build-bundle-22 /vendor.tar.gz $@ > $*/run.log
+	@./run-and-copy --image "$(IMAGE_TAG)" --cmd build-bundle /vendor.tar.gz $@ > $*/run.log
 
 upload-%: %/vendor.tar.gz
 	@echo UPLOAD $<
