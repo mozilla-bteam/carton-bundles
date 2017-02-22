@@ -35,6 +35,13 @@ DISTRIBUTIONS
       Test::More 0.45
       Tie::EncryptedHash 0
       perl 5.008
+  Any-URI-Escape-0.01
+    pathname: P/PH/PHRED/Any-URI-Escape-0.01.tar.gz
+    provides:
+      Any::URI::Escape 0.01
+    requirements:
+      ExtUtils::MakeMaker 0
+      URI::Escape 0
   AnyEvent-7.12
     pathname: M/ML/MLEHMANN/AnyEvent-7.12.tar.gz
     provides:
@@ -214,6 +221,21 @@ DISTRIBUTIONS
       Canary::Stability 2011
     requirements:
       ExtUtils::MakeMaker 0
+  Capture-Tiny-0.44
+    pathname: D/DA/DAGOLDEN/Capture-Tiny-0.44.tar.gz
+    provides:
+      Capture::Tiny 0.44
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      File::Spec 0
+      File::Temp 0
+      IO::Handle 0
+      Scalar::Util 0
+      perl 5.006
+      strict 0
+      warnings 0
   Chart-2.4.10
     pathname: C/CH/CHARTGRP/Chart-2.4.10.tar.gz
     provides:
@@ -381,6 +403,13 @@ DISTRIBUTIONS
       Module::Build 0.38
       URI::Escape 0
       perl 5.008001
+  Cpanel-JSON-XS-3.0227
+    pathname: R/RU/RURBAN/Cpanel-JSON-XS-3.0227.tar.gz
+    provides:
+      Cpanel::JSON::XS 3.0227
+    requirements:
+      ExtUtils::MakeMaker 0
+      Pod::Text 2.08
   Crypt-Blowfish-2.14
     pathname: D/DP/DPARIS/Crypt-Blowfish-2.14.tar.gz
     provides:
@@ -898,6 +927,9 @@ DISTRIBUTIONS
       POSIX 0
       Params::Validate 0.76
       Scalar::Util 0
+      Storable 0
+      Test::Fatal 0
+      Test::More 0.88
       Try::Tiny 0
       XSLoader 0
       base 0
@@ -906,6 +938,7 @@ DISTRIBUTIONS
       overload 0
       perl 5.008001
       strict 0
+      utf8 0
       vars 0
       warnings 0
   DateTime-Locale-0.45
@@ -1382,7 +1415,7 @@ DISTRIBUTIONS
       DateTime::Locale::zu_ZA undef
     requirements:
       List::MoreUtils 0
-      Module::Build 0
+      Module::Build 0.36
       Params::Validate 0.91
       perl 5.006
   DateTime-TimeZone-1.69
@@ -1825,14 +1858,6 @@ DISTRIBUTIONS
       IO::CaptureOutput 1.0801
       Test::More 0.62
       perl 5.00405
-  Devel-Cycle-1.12
-    pathname: L/LD/LDS/Devel-Cycle-1.12.tar.gz
-    provides:
-      Devel::Cycle 1.12
-    requirements:
-      ExtUtils::MakeMaker 0
-      Scalar::Util 0
-      Test::More 0
   Devel-GlobalDestruction-0.13
     pathname: H/HA/HAARG/Devel-GlobalDestruction-0.13.tar.gz
     provides:
@@ -2278,6 +2303,7 @@ DISTRIBUTIONS
     requirements:
       AnyEvent 0
       Data::Structure::Util 0
+      ExtUtils::MakeMaker 0
       File::Slurp 0
       IO::Event 0.812
       Test::SharedFork 0
@@ -2372,6 +2398,18 @@ DISTRIBUTIONS
       Filesys::Notify::Simple 0.12
     requirements:
       ExtUtils::MakeMaker 6.30
+  Future-0.34
+    pathname: P/PE/PEVANS/Future-0.34.tar.gz
+    provides:
+      Future 0.34
+      Future::Mutex 0.34
+      Future::Utils 0.34
+      Test::Future 0.34
+    requirements:
+      Carp 1.25
+      Test::Builder::Module 0
+      Time::HiRes 0
+      perl 5.008
   GD-2.56
     pathname: L/LD/LDS/GD-2.56.tar.gz
     provides:
@@ -2452,25 +2490,15 @@ DISTRIBUTIONS
     provides:
       HTML::Scrubber 0.15
     requirements:
-      Carp 0
-      File::Spec 0
-      File::Temp 0
       HTML::Entities 0
       HTML::Parser 3.47
-      IO::Handle 0
-      IPC::Open3 0
       Module::Build 0.28
       Scalar::Util 0
-      Test 0
       Test::CPAN::Meta 0
       Test::EOL 0
-      Test::Memory::Cycle 0
-      Test::More 0.94
       Test::NoTabs 0
-      blib 1.01
       perl 5.008
       strict 0
-      utf8 0
       warnings 0
   HTML-Tagset-3.20
     pathname: P/PE/PETDANCE/HTML-Tagset-3.20.tar.gz
@@ -2548,6 +2576,55 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008001
+  IO-Async-0.71
+    pathname: P/PE/PEVANS/IO-Async-0.71.tar.gz
+    provides:
+      IO::Async 0.71
+      IO::Async::Channel 0.71
+      IO::Async::ChildManager 0.71
+      IO::Async::Debug 0.71
+      IO::Async::File 0.71
+      IO::Async::FileStream 0.71
+      IO::Async::Function 0.71
+      IO::Async::Future 0.71
+      IO::Async::Handle 0.71
+      IO::Async::Listener 0.71
+      IO::Async::Loop 0.71
+      IO::Async::Loop::Poll 0.71
+      IO::Async::Loop::Select 0.71
+      IO::Async::LoopTests 0.71
+      IO::Async::Notifier 0.71
+      IO::Async::OS 0.71
+      IO::Async::OS::MSWin32 0.71
+      IO::Async::OS::cygwin 0.71
+      IO::Async::OS::linux 0.71
+      IO::Async::PID 0.71
+      IO::Async::Process 0.71
+      IO::Async::Protocol 0.71
+      IO::Async::Protocol::LineStream 0.71
+      IO::Async::Protocol::Stream 0.71
+      IO::Async::Resolver 0.71
+      IO::Async::Routine 0.71
+      IO::Async::Signal 0.71
+      IO::Async::Socket 0.71
+      IO::Async::Stream 0.71
+      IO::Async::Test 0.71
+      IO::Async::Timer 0.71
+      IO::Async::Timer::Absolute 0.71
+      IO::Async::Timer::Countdown 0.71
+      IO::Async::Timer::Periodic 0.71
+    requirements:
+      Exporter 5.57
+      File::stat 0
+      Future 0.33
+      Future::Utils 0.18
+      IO::Poll 0
+      Module::Build 0.4004
+      Socket 2.007
+      Storable 0
+      Struct::Dumb 0
+      Time::HiRes 0
+      perl 5.008004
   IO-CaptureOutput-1.1104
     pathname: D/DA/DAGOLDEN/IO-CaptureOutput-1.1104.tar.gz
     provides:
@@ -2660,6 +2737,20 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0
+  JSON-MaybeXS-1.003008
+    pathname: E/ET/ETHER/JSON-MaybeXS-1.003008.tar.gz
+    provides:
+      JSON::MaybeXS 1.003008
+    requirements:
+      Carp 0
+      Cpanel::JSON::XS 2.3310
+      ExtUtils::CBuilder 0.27
+      ExtUtils::MakeMaker 0
+      File::Spec 0
+      File::Temp 0
+      JSON::PP 2.27300
+      Scalar::Util 0
+      perl 5.006
   JSON-PP-2.27400
     pathname: M/MA/MAKAMAKA/JSON-PP-2.27400.tar.gz
     provides:
@@ -2732,6 +2823,35 @@ DISTRIBUTIONS
       List::MoreUtils 0.22
     requirements:
       ExtUtils::MakeMaker 0
+  Log-Any-1.045
+    pathname: P/PR/PREACTION/Log-Any-1.045.tar.gz
+    provides:
+      Log::Any 1.045
+      Log::Any::Adapter 1.045
+      Log::Any::Adapter::Base 1.045
+      Log::Any::Adapter::File 1.045
+      Log::Any::Adapter::Null 1.045
+      Log::Any::Adapter::Stderr 1.045
+      Log::Any::Adapter::Stdout 1.045
+      Log::Any::Adapter::Test 1.045
+      Log::Any::Adapter::Util 1.045
+      Log::Any::Manager 1.045
+      Log::Any::Proxy 1.045
+      Log::Any::Proxy::Null 1.045
+      Log::Any::Proxy::Test 1.045
+      Log::Any::Test 1.045
+    requirements:
+      B 0
+      Carp 0
+      Data::Dumper 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      IO::File 0
+      Test::Builder 0
+      constant 0
+      strict 0
+      warnings 0
   MIME-Types-2.13
     pathname: M/MA/MARKOV/MIME-Types-2.13.tar.gz
     provides:
@@ -3265,13 +3385,6 @@ DISTRIBUTIONS
       XSLoader 0
       strict 0
       warnings 0
-  PadWalker-2.2
-    pathname: R/RO/ROBIN/PadWalker-2.2.tar.gz
-    provides:
-      PadWalker 2.2
-    requirements:
-      ExtUtils::MakeMaker 0
-      perl 5.008001
   Params-Util-1.07
     pathname: A/AD/ADAMK/Params-Util-1.07.tar.gz
     provides:
@@ -3291,6 +3404,7 @@ DISTRIBUTIONS
     requirements:
       Attribute::Handlers 0.79
       ExtUtils::CBuilder 0
+      Module::Build 0.36
       Pod::Man 1.14
       Scalar::Util 1.10
       Test::More 0.34
@@ -3605,6 +3719,89 @@ DISTRIBUTIONS
       XML::Parser 2.23
       constant 0
       perl 5.006000
+  Search-Elasticsearch-5.01
+    pathname: D/DR/DRTECH/Search-Elasticsearch-5.01.tar.gz
+    provides:
+      Search::Elasticsearch 5.01
+      Search::Elasticsearch::Client::5_0 5.01
+      Search::Elasticsearch::Client::5_0::Bulk 5.01
+      Search::Elasticsearch::Client::5_0::Direct 5.01
+      Search::Elasticsearch::Client::5_0::Direct::Cat 5.01
+      Search::Elasticsearch::Client::5_0::Direct::Cluster 5.01
+      Search::Elasticsearch::Client::5_0::Direct::Indices 5.01
+      Search::Elasticsearch::Client::5_0::Direct::Ingest 5.01
+      Search::Elasticsearch::Client::5_0::Direct::Nodes 5.01
+      Search::Elasticsearch::Client::5_0::Direct::Snapshot 5.01
+      Search::Elasticsearch::Client::5_0::Direct::Tasks 5.01
+      Search::Elasticsearch::Client::5_0::Role::API 5.01
+      Search::Elasticsearch::Client::5_0::Role::Bulk 5.01
+      Search::Elasticsearch::Client::5_0::Role::Scroll 5.01
+      Search::Elasticsearch::Client::5_0::Scroll 5.01
+      Search::Elasticsearch::Cxn::Factory 5.01
+      Search::Elasticsearch::Cxn::HTTPTiny 5.01
+      Search::Elasticsearch::Cxn::Hijk 5.01
+      Search::Elasticsearch::Cxn::LWP 5.01
+      Search::Elasticsearch::CxnPool::Sniff 5.01
+      Search::Elasticsearch::CxnPool::Static 5.01
+      Search::Elasticsearch::CxnPool::Static::NoPing 5.01
+      Search::Elasticsearch::Error 5.01
+      Search::Elasticsearch::Logger::LogAny 5.01
+      Search::Elasticsearch::Role::API 5.01
+      Search::Elasticsearch::Role::Client 5.01
+      Search::Elasticsearch::Role::Client::Direct 5.01
+      Search::Elasticsearch::Role::Cxn 5.01
+      Search::Elasticsearch::Role::CxnPool 5.01
+      Search::Elasticsearch::Role::CxnPool::Sniff 5.01
+      Search::Elasticsearch::Role::CxnPool::Static 5.01
+      Search::Elasticsearch::Role::CxnPool::Static::NoPing 5.01
+      Search::Elasticsearch::Role::Is_Sync 5.01
+      Search::Elasticsearch::Role::Logger 5.01
+      Search::Elasticsearch::Role::Serializer 5.01
+      Search::Elasticsearch::Role::Serializer::JSON 5.01
+      Search::Elasticsearch::Role::Transport 5.01
+      Search::Elasticsearch::Serializer::JSON 5.01
+      Search::Elasticsearch::Serializer::JSON::Cpanel 5.01
+      Search::Elasticsearch::Serializer::JSON::PP 5.01
+      Search::Elasticsearch::Serializer::JSON::XS 5.01
+      Search::Elasticsearch::TestServer 5.01
+      Search::Elasticsearch::Transport 5.01
+      Search::Elasticsearch::Util 5.01
+    requirements:
+      Any::URI::Escape 0
+      Data::Dumper 0
+      Devel::GlobalDestruction 0
+      Encode 0
+      ExtUtils::MakeMaker 0
+      File::Temp 0
+      HTTP::Headers 0
+      HTTP::Request 0
+      HTTP::Tiny 0.043
+      IO::Compress::Deflate 0
+      IO::Compress::Gzip 0
+      IO::Select 0
+      IO::Socket 0
+      IO::Uncompress::Gunzip 0
+      IO::Uncompress::Inflate 0
+      JSON::MaybeXS 1.002002
+      JSON::PP 0
+      LWP::UserAgent 0
+      List::Util 0
+      Log::Any 1.02
+      Log::Any::Adapter 0
+      MIME::Base64 0
+      Module::Runtime 0
+      Moo 1.003
+      Moo::Role 0
+      POSIX 0
+      Package::Stash 0.34
+      Scalar::Util 0
+      Sub::Exporter 0
+      Time::HiRes 0
+      Try::Tiny 0
+      URI 0
+      namespace::clean 0
+      overload 0
+      warnings 0
   Sort-Versions-1.62
     pathname: N/NE/NEILB/Sort-Versions-1.62.tar.gz
     provides:
@@ -3631,6 +3828,25 @@ DISTRIBUTIONS
       String::CRC32 1.5
     requirements:
       ExtUtils::MakeMaker 0
+  Struct-Dumb-0.09
+    pathname: P/PE/PEVANS/Struct-Dumb-0.09.tar.gz
+    provides:
+      Struct::Dumb 0.09
+    requirements:
+      Module::Build 0.4004
+  Sub-Exporter-0.987
+    pathname: R/RJ/RJBS/Sub-Exporter-0.987.tar.gz
+    provides:
+      Sub::Exporter 0.987
+      Sub::Exporter::Util 0.987
+    requirements:
+      Carp 0
+      Data::OptList 0.100
+      ExtUtils::MakeMaker 6.30
+      Params::Util 0.14
+      Sub::Install 0.92
+      strict 0
+      warnings 0
   Sub-Exporter-Progressive-0.001011
     pathname: F/FR/FREW/Sub-Exporter-Progressive-0.001011.tar.gz
     provides:
@@ -3826,6 +4042,16 @@ DISTRIBUTIONS
       List::Util 1.09
       Scalar::Util 1.09
       Test::Builder 0
+  Test-Differences-0.64
+    pathname: D/DC/DCANTRELL/Test-Differences-0.64.tar.gz
+    provides:
+      Test::Differences 0.64
+    requirements:
+      Capture::Tiny 0.24
+      Data::Dumper 2.126
+      ExtUtils::MakeMaker 0
+      Test::More 0.88
+      Text::Diff 0.35
   Test-EOL-1.6
     pathname: F/FR/FREW/Test-EOL-1.6.tar.gz
     provides:
@@ -3922,19 +4148,6 @@ DISTRIBUTIONS
       Test::Harness 3.36
     requirements:
       ExtUtils::MakeMaker 0
-  Test-Memory-Cycle-1.06
-    pathname: P/PE/PETDANCE/Test-Memory-Cycle-1.06.tar.gz
-    provides:
-      Test::Memory::Cycle 1.06
-    requirements:
-      Devel::Cycle 1.07
-      ExtUtils::MakeMaker 0
-      Getopt::Long 0
-      PadWalker 0
-      Test::Builder 0
-      Test::Builder::Tester 0
-      Test::More 0
-      Test::Simple 0.62
   Test-NoTabs-1.4
     pathname: B/BO/BOBTFISH/Test-NoTabs-1.4.tar.gz
     provides:
@@ -4094,6 +4307,16 @@ DISTRIBUTIONS
       namespace::clean 0
       strict 0
       warnings 0
+  Text-CSV_XS-1.26
+    pathname: H/HM/HMBRAND/Text-CSV_XS-1.26.tgz
+    provides:
+      Text::CSV_XS 1.26
+    requirements:
+      Config 0
+      DynaLoader 0
+      ExtUtils::MakeMaker 0
+      IO::Handle 0
+      Test::More 0
   Text-Diff-1.44
     pathname: N/NE/NEILB/Text-Diff-1.44.tar.gz
     provides:
@@ -4106,6 +4329,35 @@ DISTRIBUTIONS
       Exporter 0
       ExtUtils::MakeMaker 0
       perl 5.006
+  Text-Markdown-1.000031
+    pathname: B/BO/BOBTFISH/Text-Markdown-1.000031.tar.gz
+    provides:
+      Text::Markdown 1.000031
+    requirements:
+      Digest::MD5 0
+      Encode 0
+      ExtUtils::MakeMaker 6.42
+      FindBin 0
+      List::MoreUtils 0
+      Test::Differences 0
+      Test::Exception 0
+      Test::More 0.42
+      Text::Balanced 0
+  Text-MultiMarkdown-1.000035
+    pathname: B/BO/BOBTFISH/Text-MultiMarkdown-1.000035.tar.gz
+    provides:
+      Text::MultiMarkdown 1.000035
+    requirements:
+      Digest::MD5 0
+      Encode 0
+      ExtUtils::MakeMaker 6.59
+      FindBin 0
+      HTML::Entities 0
+      List::MoreUtils 0
+      Test::Exception 0
+      Test::More 0.42
+      Text::Markdown v1.0.26
+      perl 5.008
   TheSchwartz-1.12
     pathname: J/JF/JFEARN/TheSchwartz-1.12.tar.gz
     provides:
