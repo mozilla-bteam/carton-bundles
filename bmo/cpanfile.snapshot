@@ -233,21 +233,6 @@ DISTRIBUTIONS
       Canary::Stability 2011
     requirements:
       ExtUtils::MakeMaker 0
-  Capture-Tiny-0.44
-    pathname: D/DA/DAGOLDEN/Capture-Tiny-0.44.tar.gz
-    provides:
-      Capture::Tiny 0.44
-    requirements:
-      Carp 0
-      Exporter 0
-      ExtUtils::MakeMaker 6.17
-      File::Spec 0
-      File::Temp 0
-      IO::Handle 0
-      Scalar::Util 0
-      perl 5.006
-      strict 0
-      warnings 0
   Carp-1.38
     pathname: R/RJ/RJBS/Carp-1.38.tar.gz
     provides:
@@ -865,12 +850,6 @@ DISTRIBUTIONS
     pathname: B/BT/BTROTT/Data-Buffer-0.04.tar.gz
     provides:
       Data::Buffer 0.04
-    requirements:
-      ExtUtils::MakeMaker 0
-  Data-Dumper-2.161
-    pathname: S/SM/SMUELLER/Data-Dumper-2.161.tar.gz
-    provides:
-      Data::Dumper 2.161
     requirements:
       ExtUtils::MakeMaker 0
   Data-ObjectDriver-0.14
@@ -4136,15 +4115,6 @@ DISTRIBUTIONS
       List::Util 1.09
       Scalar::Util 1.09
       Test::Builder 0
-  Test-Differences-0.64
-    pathname: D/DC/DCANTRELL/Test-Differences-0.64.tar.gz
-    provides:
-      Test::Differences 0.64
-    requirements:
-      Capture::Tiny 0.24
-      Data::Dumper 2.126
-      Test::More 0.88
-      Text::Diff 0.35
   Test-EOL-1.6
     pathname: F/FR/FREW/Test-EOL-1.6.tar.gz
     provides:
@@ -4422,35 +4392,6 @@ DISTRIBUTIONS
       Exporter 0
       ExtUtils::MakeMaker 0
       perl 5.006
-  Text-Markdown-1.000031
-    pathname: B/BO/BOBTFISH/Text-Markdown-1.000031.tar.gz
-    provides:
-      Text::Markdown 1.000031
-    requirements:
-      Digest::MD5 0
-      Encode 0
-      ExtUtils::MakeMaker 6.42
-      FindBin 0
-      List::MoreUtils 0
-      Test::Differences 0
-      Test::Exception 0
-      Test::More 0.42
-      Text::Balanced 0
-  Text-MultiMarkdown-1.000035
-    pathname: B/BO/BOBTFISH/Text-MultiMarkdown-1.000035.tar.gz
-    provides:
-      Text::MultiMarkdown 1.000035
-    requirements:
-      Digest::MD5 0
-      Encode 0
-      ExtUtils::MakeMaker 6.59
-      FindBin 0
-      HTML::Entities 0
-      List::MoreUtils 0
-      Test::Exception 0
-      Test::More 0.42
-      Text::Markdown v1.0.26
-      perl 5.008
   TheSchwartz-1.12
     pathname: J/JF/JFEARN/TheSchwartz-1.12.tar.gz
     provides:

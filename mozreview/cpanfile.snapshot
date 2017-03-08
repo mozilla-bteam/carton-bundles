@@ -221,21 +221,6 @@ DISTRIBUTIONS
       Canary::Stability 2011
     requirements:
       ExtUtils::MakeMaker 0
-  Capture-Tiny-0.44
-    pathname: D/DA/DAGOLDEN/Capture-Tiny-0.44.tar.gz
-    provides:
-      Capture::Tiny 0.44
-    requirements:
-      Carp 0
-      Exporter 0
-      ExtUtils::MakeMaker 6.17
-      File::Spec 0
-      File::Temp 0
-      IO::Handle 0
-      Scalar::Util 0
-      perl 5.006
-      strict 0
-      warnings 0
   Chart-2.4.10
     pathname: C/CH/CHARTGRP/Chart-2.4.10.tar.gz
     provides:
@@ -403,13 +388,6 @@ DISTRIBUTIONS
       Module::Build 0.38
       URI::Escape 0
       perl 5.008001
-  Cpanel-JSON-XS-3.0227
-    pathname: R/RU/RURBAN/Cpanel-JSON-XS-3.0227.tar.gz
-    provides:
-      Cpanel::JSON::XS 3.0227
-    requirements:
-      ExtUtils::MakeMaker 0
-      Pod::Text 2.08
   Crypt-Blowfish-2.14
     pathname: D/DP/DPARIS/Crypt-Blowfish-2.14.tar.gz
     provides:
@@ -927,9 +905,6 @@ DISTRIBUTIONS
       POSIX 0
       Params::Validate 0.76
       Scalar::Util 0
-      Storable 0
-      Test::Fatal 0
-      Test::More 0.88
       Try::Tiny 0
       XSLoader 0
       base 0
@@ -938,7 +913,6 @@ DISTRIBUTIONS
       overload 0
       perl 5.008001
       strict 0
-      utf8 0
       vars 0
       warnings 0
   DateTime-Locale-0.45
@@ -1415,7 +1389,7 @@ DISTRIBUTIONS
       DateTime::Locale::zu_ZA undef
     requirements:
       List::MoreUtils 0
-      Module::Build 0.36
+      Module::Build 0
       Params::Validate 0.91
       perl 5.006
   DateTime-TimeZone-1.69
@@ -2303,7 +2277,6 @@ DISTRIBUTIONS
     requirements:
       AnyEvent 0
       Data::Structure::Util 0
-      ExtUtils::MakeMaker 0
       File::Slurp 0
       IO::Event 0.812
       Test::SharedFork 0
@@ -2743,7 +2716,6 @@ DISTRIBUTIONS
       JSON::MaybeXS 1.003008
     requirements:
       Carp 0
-      Cpanel::JSON::XS 2.3310
       ExtUtils::CBuilder 0.27
       ExtUtils::MakeMaker 0
       File::Spec 0
@@ -3404,7 +3376,6 @@ DISTRIBUTIONS
     requirements:
       Attribute::Handlers 0.79
       ExtUtils::CBuilder 0
-      Module::Build 0.36
       Pod::Man 1.14
       Scalar::Util 1.10
       Test::More 0.34
@@ -4042,16 +4013,6 @@ DISTRIBUTIONS
       List::Util 1.09
       Scalar::Util 1.09
       Test::Builder 0
-  Test-Differences-0.64
-    pathname: D/DC/DCANTRELL/Test-Differences-0.64.tar.gz
-    provides:
-      Test::Differences 0.64
-    requirements:
-      Capture::Tiny 0.24
-      Data::Dumper 2.126
-      ExtUtils::MakeMaker 0
-      Test::More 0.88
-      Text::Diff 0.35
   Test-EOL-1.6
     pathname: F/FR/FREW/Test-EOL-1.6.tar.gz
     provides:
@@ -4329,35 +4290,6 @@ DISTRIBUTIONS
       Exporter 0
       ExtUtils::MakeMaker 0
       perl 5.006
-  Text-Markdown-1.000031
-    pathname: B/BO/BOBTFISH/Text-Markdown-1.000031.tar.gz
-    provides:
-      Text::Markdown 1.000031
-    requirements:
-      Digest::MD5 0
-      Encode 0
-      ExtUtils::MakeMaker 6.42
-      FindBin 0
-      List::MoreUtils 0
-      Test::Differences 0
-      Test::Exception 0
-      Test::More 0.42
-      Text::Balanced 0
-  Text-MultiMarkdown-1.000035
-    pathname: B/BO/BOBTFISH/Text-MultiMarkdown-1.000035.tar.gz
-    provides:
-      Text::MultiMarkdown 1.000035
-    requirements:
-      Digest::MD5 0
-      Encode 0
-      ExtUtils::MakeMaker 6.59
-      FindBin 0
-      HTML::Entities 0
-      List::MoreUtils 0
-      Test::Exception 0
-      Test::More 0.42
-      Text::Markdown v1.0.26
-      perl 5.008
   TheSchwartz-1.12
     pathname: J/JF/JFEARN/TheSchwartz-1.12.tar.gz
     provides:
