@@ -10,7 +10,7 @@ VERSION  := $(shell git show --oneline | awk '$$1 {print $$1}')
 IMAGE_TAG  = build-$*
 SCRIPTS   := $(wildcard scripts/*)
 
-DIRS    ?= $(dir $(wildcard */Dockerfile.PL))
+DIRS    ?= bmo/ bmo24/ mozreview/
 BUNDLES  = $(addsuffix vendor.tar.gz,$(DIRS))
 
 export PERL5LIB DOCKER SUDO S3_BUCKET_URI
