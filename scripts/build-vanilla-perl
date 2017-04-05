@@ -1,6 +1,15 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
+if (!$ENV{DID_EXEC} && $^X ne $ENV{SYSTEM_PERL}) {
+    $ENV{DID_EXEC} = 1;
+    exec($ENV{SYSTEM_PERL}, @ARGV);
+}
 use strict;
 use warnings;
+
+eval {
+    require Digest::SHA;
+    require Digest::MD5;
+} or die "$^X is a broken perl install";
 
 my $ver = $^V;
 $ver =~ s/^v//;

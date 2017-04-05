@@ -66,9 +66,11 @@ sub comment ($) {
 }
 
 sub build_perl_and_carton {
+    my (%param) = @_;
     comment "build perl and carton";
     DOCKER_ENV PERL_DIR => '/opt/vanilla-perl';
     DOCKER_ENV PERL     => '$PERL_DIR/bin/perl';
+    DOCKER_ENV SYSTEM_PERL => $param{system_perl};
     DOCKER_ENV CARTON   => '$PERL_DIR/bin/carton';
 
     ADD 'https://raw.github.com/tokuhirom/Perl-Build/master/perl-build', '/usr/local/bin/perl-build';
@@ -82,7 +84,9 @@ sub build_perl_and_carton {
 }
 
 sub build_bundle {
-    build_perl_and_carton();
+    my (%param) = @_;
+    $param{system_perl} //= '/usr/bin/perl';
+    build_perl_and_carton(%param);
 
     comment "git clone";
     DOCKER_ENV BUGZILLA_DIR => $WORK_DIR;
