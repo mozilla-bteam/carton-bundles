@@ -4047,6 +4047,14 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Taint-Util-0.08
+    pathname: A/AV/AVAR/Taint-Util-0.08.tar.gz
+    provides:
+      Taint::Util 0.08
+    requirements:
+      ExtUtils::MakeMaker 6.11
+      Test::More 0
+      XSLoader 0
   Task-Weaken-1.04
     pathname: A/AD/ADAMK/Task-Weaken-1.04.tar.gz
     provides:

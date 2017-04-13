@@ -2695,11 +2695,11 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  List-MoreUtils-0.418
-    pathname: R/RE/REHSACK/List-MoreUtils-0.418.tar.gz
+  List-MoreUtils-0.419
+    pathname: R/RE/REHSACK/List-MoreUtils-0.419.tar.gz
     provides:
-      List::MoreUtils 0.418
-      List::MoreUtils::PP 0.418
+      List::MoreUtils 0.419
+      List::MoreUtils::PP 0.419
     requirements:
       Exporter::Tiny 0.038
       ExtUtils::MakeMaker 0
@@ -3287,12 +3287,12 @@ DISTRIBUTIONS
       Pod::Man 1.14
       Scalar::Util 1.10
       Test::More 0.34
-  Params-ValidationCompiler-0.23
-    pathname: D/DR/DROLSKY/Params-ValidationCompiler-0.23.tar.gz
+  Params-ValidationCompiler-0.24
+    pathname: D/DR/DROLSKY/Params-ValidationCompiler-0.24.tar.gz
     provides:
-      Params::ValidationCompiler 0.23
-      Params::ValidationCompiler::Compiler 0.23
-      Params::ValidationCompiler::Exceptions 0.23
+      Params::ValidationCompiler 0.24
+      Params::ValidationCompiler::Compiler 0.24
+      Params::ValidationCompiler::Exceptions 0.24
     requirements:
       B 0
       Carp 0
@@ -3804,10 +3804,10 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0.88
-  Sub-Identify-0.13
-    pathname: R/RG/RGARCIA/Sub-Identify-0.13.tar.gz
+  Sub-Identify-0.14
+    pathname: R/RG/RGARCIA/Sub-Identify-0.14.tar.gz
     provides:
-      Sub::Identify 0.13
+      Sub::Identify 0.14
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0
@@ -3833,6 +3833,14 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Taint-Util-0.08
+    pathname: A/AV/AVAR/Taint-Util-0.08.tar.gz
+    provides:
+      Taint::Util 0.08
+    requirements:
+      ExtUtils::MakeMaker 6.11
+      Test::More 0
+      XSLoader 0
   Task-Weaken-1.04
     pathname: A/AD/ADAMK/Task-Weaken-1.04.tar.gz
     provides:

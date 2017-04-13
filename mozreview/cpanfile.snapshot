@@ -1800,6 +1800,14 @@ DISTRIBUTIONS
       IO::CaptureOutput 1.0801
       Test::More 0.62
       perl 5.00405
+  Devel-Cycle-1.12
+    pathname: L/LD/LDS/Devel-Cycle-1.12.tar.gz
+    provides:
+      Devel::Cycle 1.12
+    requirements:
+      ExtUtils::MakeMaker 0
+      Scalar::Util 0
+      Test::More 0
   Devel-GlobalDestruction-0.13
     pathname: H/HA/HAARG/Devel-GlobalDestruction-0.13.tar.gz
     provides:
@@ -2459,15 +2467,25 @@ DISTRIBUTIONS
     provides:
       HTML::Scrubber 0.15
     requirements:
+      Carp 0
+      File::Spec 0
+      File::Temp 0
       HTML::Entities 0
       HTML::Parser 3.47
+      IO::Handle 0
+      IPC::Open3 0
       Module::Build 0.28
       Scalar::Util 0
+      Test 0
       Test::CPAN::Meta 0
       Test::EOL 0
+      Test::Memory::Cycle 0
+      Test::More 0.94
       Test::NoTabs 0
+      blib 1.01
       perl 5.008
       strict 0
+      utf8 0
       warnings 0
   HTML-Tagset-3.20
     pathname: P/PE/PETDANCE/HTML-Tagset-3.20.tar.gz
@@ -2786,11 +2804,13 @@ DISTRIBUTIONS
       Linux::Pid 0.04
     requirements:
       ExtUtils::MakeMaker 0
-  List-MoreUtils-0.22
-    pathname: V/VP/VPARSEVAL/List-MoreUtils-0.22.tar.gz
+  List-MoreUtils-0.419
+    pathname: R/RE/REHSACK/List-MoreUtils-0.419.tar.gz
     provides:
-      List::MoreUtils 0.22
+      List::MoreUtils 0.419
+      List::MoreUtils::PP 0.419
     requirements:
+      Exporter::Tiny 0.038
       ExtUtils::MakeMaker 0
   Log-Any-1.045
     pathname: P/PR/PREACTION/Log-Any-1.045.tar.gz
@@ -3016,6 +3036,21 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test::More 0
       Test::Number::Delta 0
+  Mixin-Linewise-0.108
+    pathname: R/RJ/RJBS/Mixin-Linewise-0.108.tar.gz
+    provides:
+      Mixin::Linewise 0.108
+      Mixin::Linewise::Readers 0.108
+      Mixin::Linewise::Writers 0.108
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      IO::File 0
+      PerlIO::utf8_strict 0
+      Sub::Exporter 0
+      perl 5.008001
+      strict 0
+      warnings 0
   Module-Build-0.4218
     pathname: L/LE/LEONT/Module-Build-0.4218.tar.gz
     provides:
@@ -3181,9 +3216,19 @@ DISTRIBUTIONS
       B 0
       Class::Method::Modifiers 0
       ExtUtils::MakeMaker 0
+      File::Spec 0
+      File::Temp 0
+      IO::Handle 0
+      IPC::Open3 0
       Module::Build 0.28
       Moo 1.001000
       Moo::Role 0
+      Pod::Coverage::TrustPod 0
+      Test::CPAN::Meta 0
+      Test::Fatal 0
+      Test::More 0.88
+      Test::Pod 0
+      Test::Pod::Coverage 0
       bareword::filehandles 0
       constant 0
       indirect 0
@@ -3191,6 +3236,7 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       strictures 1
+      warnings 0
   Mozilla-CA-20160104
     pathname: A/AB/ABH/Mozilla-CA-20160104.tar.gz
     provides:
@@ -3354,6 +3400,13 @@ DISTRIBUTIONS
       XSLoader 0
       strict 0
       warnings 0
+  PadWalker-2.2
+    pathname: R/RO/ROBIN/PadWalker-2.2.tar.gz
+    provides:
+      PadWalker 2.2
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.008001
   Params-Util-1.07
     pathname: A/AD/ADAMK/Params-Util-1.07.tar.gz
     provides:
@@ -3426,6 +3479,16 @@ DISTRIBUTIONS
       Cwd 2
       ExtUtils::MakeMaker 0
       File::Temp 0.05
+  PerlIO-utf8_strict-0.007
+    pathname: L/LE/LEONT/PerlIO-utf8_strict-0.007.tar.gz
+    provides:
+      PerlIO::utf8_strict 0.007
+    requirements:
+      ExtUtils::MakeMaker 0
+      XSLoader 0
+      perl 5.008
+      strict 0
+      warnings 0
   Plack-1.0039
     pathname: M/MI/MIYAGAWA/Plack-1.0039.tar.gz
     provides:
@@ -3538,6 +3601,29 @@ DISTRIBUTIONS
       Pod::Find 0.21
       Pod::Parser 1.13
       Test::More 0
+  Pod-Coverage-TrustPod-0.100003
+    pathname: R/RJ/RJBS/Pod-Coverage-TrustPod-0.100003.tar.gz
+    provides:
+      Pod::Coverage::TrustPod 0.100003
+    requirements:
+      ExtUtils::MakeMaker 6.30
+      Pod::Coverage::CountParents 0
+      Pod::Eventual::Simple 0
+      Pod::Find 0
+      base 0
+      strict 0
+      warnings 0
+  Pod-Eventual-0.094001
+    pathname: R/RJ/RJBS/Pod-Eventual-0.094001.tar.gz
+    provides:
+      Pod::Eventual 0.094001
+      Pod::Eventual::Simple 0.094001
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 6.30
+      Mixin::Linewise::Readers 0.102
+      strict 0
+      warnings 0
   Regexp-Common-2016060801
     pathname: A/AB/ABIGAIL/Regexp-Common-2016060801.tar.gz
     provides:
@@ -3947,6 +4033,14 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Taint-Util-0.08
+    pathname: A/AV/AVAR/Taint-Util-0.08.tar.gz
+    provides:
+      Taint::Util 0.08
+    requirements:
+      ExtUtils::MakeMaker 6.11
+      Test::More 0
+      XSLoader 0
   Task-Weaken-1.04
     pathname: A/AD/ADAMK/Task-Weaken-1.04.tar.gz
     provides:
@@ -4120,6 +4214,7 @@ DISTRIBUTIONS
     requirements:
       Capture::Tiny 0.24
       Data::Dumper 2.126
+      ExtUtils::MakeMaker 0
       Test::More 0.88
       Text::Diff 0.35
   Test-EOL-1.6
@@ -4218,6 +4313,19 @@ DISTRIBUTIONS
       Test::Harness 3.36
     requirements:
       ExtUtils::MakeMaker 0
+  Test-Memory-Cycle-1.06
+    pathname: P/PE/PETDANCE/Test-Memory-Cycle-1.06.tar.gz
+    provides:
+      Test::Memory::Cycle 1.06
+    requirements:
+      Devel::Cycle 1.07
+      ExtUtils::MakeMaker 0
+      Getopt::Long 0
+      PadWalker 0
+      Test::Builder 0
+      Test::Builder::Tester 0
+      Test::More 0
+      Test::Simple 0.62
   Test-NoTabs-1.4
     pathname: B/BO/BOBTFISH/Test-NoTabs-1.4.tar.gz
     provides:
@@ -4252,6 +4360,28 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       vars 0
+      warnings 0
+  Test-Pod-1.51
+    pathname: E/ET/ETHER/Test-Pod-1.51.tar.gz
+    provides:
+      Test::Pod 1.51
+    requirements:
+      ExtUtils::MakeMaker 0
+      File::Find 0
+      Pod::Simple 3.05
+      Test::Builder::Tester 1.02
+      Test::More 0.62
+      perl 5.008
+  Test-Pod-Coverage-1.10
+    pathname: N/NE/NEILB/Test-Pod-Coverage-1.10.tar.gz
+    provides:
+      Test::Pod::Coverage 1.10
+    requirements:
+      ExtUtils::MakeMaker 0
+      Pod::Coverage 0
+      Test::Builder 0
+      perl 5.006
+      strict 0
       warnings 0
   Test-SharedFork-0.35
     pathname: E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
