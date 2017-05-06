@@ -10,7 +10,7 @@ VERSION  := $(shell git show --oneline | awk '$$1 {print $$1}')
 IMAGE_TAG  = build-$*
 SCRIPTS   := $(wildcard scripts/*)
 
-DIRS    ?= bmo/ bmo24/ mozreview/
+DIRS    ?= bmo/ bmo24/ mozreview/ amazon/
 BUNDLES  = $(addsuffix vendor.tar.gz,$(DIRS))
 
 export PERL5LIB DOCKER SUDO S3_BUCKET_URI
