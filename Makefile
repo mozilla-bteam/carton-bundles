@@ -10,7 +10,7 @@ VERSION  := $(shell git show --oneline | awk '$$1 {print $$1}')
 IMAGE_TAG  = build-$*
 SCRIPTS   := $(wildcard scripts/*)
 
-DIRS    ?= bmo/ bmo24/ mozreview/ amazon/
+DIRS    ?= bmo/ bmo24/ mozreview/ amazon/ bmo_centos7/
 BUNDLES  = $(addsuffix vendor.tar.gz,$(DIRS))
 
 export PERL5LIB DOCKER SUDO S3_BUCKET_URI
@@ -31,6 +31,11 @@ snapshots: $(BUNDLES)
 		file="$$(dirname $$bundle)/cpanfile.snapshot"; \
 		tar -zxf $$bundle $$file; \
 		git add $$file; \
+	done
+
+s3_uris:
+	@for b in $(BUNDLES); do \
+		echo $(S3_BUCKET_URI)/$$b; \
 	done
 
 depends.mk: scan-deps $(git ls-files $(DIRS))
