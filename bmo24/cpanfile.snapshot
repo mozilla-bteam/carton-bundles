@@ -368,10 +368,10 @@ DISTRIBUTIONS
       Module::Build 0.38
       URI::Escape 0
       perl 5.008001
-  Cpanel-JSON-XS-3.0231
-    pathname: R/RU/RURBAN/Cpanel-JSON-XS-3.0231.tar.gz
+  Cpanel-JSON-XS-3.0233
+    pathname: R/RU/RURBAN/Cpanel-JSON-XS-3.0233.tar.gz
     provides:
-      Cpanel::JSON::XS 3.0231
+      Cpanel::JSON::XS 3.0233
     requirements:
       ExtUtils::MakeMaker 0
       Pod::Text 2.08
@@ -3695,49 +3695,49 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Specio-0.36
-    pathname: D/DR/DROLSKY/Specio-0.36.tar.gz
+  Specio-0.37
+    pathname: D/DR/DROLSKY/Specio-0.37.tar.gz
     provides:
-      Specio 0.36
-      Specio::Coercion 0.36
-      Specio::Constraint::AnyCan 0.36
-      Specio::Constraint::AnyDoes 0.36
-      Specio::Constraint::AnyIsa 0.36
-      Specio::Constraint::Enum 0.36
-      Specio::Constraint::Intersection 0.36
-      Specio::Constraint::ObjectCan 0.36
-      Specio::Constraint::ObjectDoes 0.36
-      Specio::Constraint::ObjectIsa 0.36
-      Specio::Constraint::Parameterizable 0.36
-      Specio::Constraint::Parameterized 0.36
-      Specio::Constraint::Role::CanType 0.36
-      Specio::Constraint::Role::DoesType 0.36
-      Specio::Constraint::Role::Interface 0.36
-      Specio::Constraint::Role::IsaType 0.36
-      Specio::Constraint::Simple 0.36
-      Specio::Constraint::Structurable 0.36
-      Specio::Constraint::Structured 0.36
-      Specio::Constraint::Union 0.36
-      Specio::Declare 0.36
-      Specio::DeclaredAt 0.36
-      Specio::Exception 0.36
-      Specio::Exporter 0.36
-      Specio::Helpers 0.36
-      Specio::Library::Builtins 0.36
-      Specio::Library::Numeric 0.36
-      Specio::Library::Perl 0.36
-      Specio::Library::String 0.36
-      Specio::Library::Structured 0.36
-      Specio::Library::Structured::Dict 0.36
-      Specio::Library::Structured::Map 0.36
-      Specio::Library::Structured::Tuple 0.36
-      Specio::OO 0.36
-      Specio::PartialDump 0.36
-      Specio::Registry 0.36
-      Specio::Role::Inlinable 0.36
-      Specio::Subs 0.36
-      Specio::TypeChecks 0.36
-      Test::Specio 0.36
+      Specio 0.37
+      Specio::Coercion 0.37
+      Specio::Constraint::AnyCan 0.37
+      Specio::Constraint::AnyDoes 0.37
+      Specio::Constraint::AnyIsa 0.37
+      Specio::Constraint::Enum 0.37
+      Specio::Constraint::Intersection 0.37
+      Specio::Constraint::ObjectCan 0.37
+      Specio::Constraint::ObjectDoes 0.37
+      Specio::Constraint::ObjectIsa 0.37
+      Specio::Constraint::Parameterizable 0.37
+      Specio::Constraint::Parameterized 0.37
+      Specio::Constraint::Role::CanType 0.37
+      Specio::Constraint::Role::DoesType 0.37
+      Specio::Constraint::Role::Interface 0.37
+      Specio::Constraint::Role::IsaType 0.37
+      Specio::Constraint::Simple 0.37
+      Specio::Constraint::Structurable 0.37
+      Specio::Constraint::Structured 0.37
+      Specio::Constraint::Union 0.37
+      Specio::Declare 0.37
+      Specio::DeclaredAt 0.37
+      Specio::Exception 0.37
+      Specio::Exporter 0.37
+      Specio::Helpers 0.37
+      Specio::Library::Builtins 0.37
+      Specio::Library::Numeric 0.37
+      Specio::Library::Perl 0.37
+      Specio::Library::String 0.37
+      Specio::Library::Structured 0.37
+      Specio::Library::Structured::Dict 0.37
+      Specio::Library::Structured::Map 0.37
+      Specio::Library::Structured::Tuple 0.37
+      Specio::OO 0.37
+      Specio::PartialDump 0.37
+      Specio::Registry 0.37
+      Specio::Role::Inlinable 0.37
+      Specio::Subs 0.37
+      Specio::TypeChecks 0.37
+      Test::Specio 0.37
     requirements:
       B 0
       Carp 0
@@ -3833,14 +3833,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Taint-Util-0.08
-    pathname: A/AV/AVAR/Taint-Util-0.08.tar.gz
-    provides:
-      Taint::Util 0.08
-    requirements:
-      ExtUtils::MakeMaker 6.11
-      Test::More 0
-      XSLoader 0
   Task-Weaken-1.04
     pathname: A/AD/ADAMK/Task-Weaken-1.04.tar.gz
     provides:
