@@ -2770,6 +2770,30 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.52
       Types::Serialiser 0
       common::sense 0
+  LWP-Protocol-connect-6.09
+    pathname: B/BE/BENNING/LWP-Protocol-connect-6.09.tar.gz
+    provides:
+      LWP::Protocol::connect 6.09
+      LWP::Protocol::connect::Socket::Base 6.09
+      LWP::Protocol::http::connect 6.09
+      LWP::Protocol::http::connect::Socket 6.09
+      LWP::Protocol::https::connect 6.09
+      LWP::Protocol::https::connect::Socket 6.09
+      URI::connect 6.09
+    requirements:
+      ExtUtils::MakeMaker 6.30
+      HTTP::Request 0
+      IO::Socket::SSL 0
+      LWP::Protocol 0
+      LWP::Protocol::http 0
+      LWP::Protocol::https 0
+      LWP::UserAgent 0
+      Test::Exception 0
+      Test::More 0
+      URI::http 0
+      base 0
+      strict 0
+      warnings 0
   Lexical-SealRequireHints-0.010
     pathname: Z/ZE/ZEFRAM/Lexical-SealRequireHints-0.010.tar.gz
     provides:
@@ -3018,21 +3042,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test::More 0
       Test::Number::Delta 0
-  Mixin-Linewise-0.108
-    pathname: R/RJ/RJBS/Mixin-Linewise-0.108.tar.gz
-    provides:
-      Mixin::Linewise 0.108
-      Mixin::Linewise::Readers 0.108
-      Mixin::Linewise::Writers 0.108
-    requirements:
-      Carp 0
-      ExtUtils::MakeMaker 0
-      IO::File 0
-      PerlIO::utf8_strict 0
-      Sub::Exporter 0
-      perl 5.008001
-      strict 0
-      warnings 0
   Module-Build-0.4218
     pathname: L/LE/LEONT/Module-Build-0.4218.tar.gz
     provides:
@@ -3198,19 +3207,9 @@ DISTRIBUTIONS
       B 0
       Class::Method::Modifiers 0
       ExtUtils::MakeMaker 0
-      File::Spec 0
-      File::Temp 0
-      IO::Handle 0
-      IPC::Open3 0
       Module::Build 0.28
       Moo 1.001000
       Moo::Role 0
-      Pod::Coverage::TrustPod 0
-      Test::CPAN::Meta 0
-      Test::Fatal 0
-      Test::More 0.88
-      Test::Pod 0
-      Test::Pod::Coverage 0
       bareword::filehandles 0
       constant 0
       indirect 0
@@ -3218,7 +3217,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       strictures 1
-      warnings 0
   Mozilla-CA-20160104
     pathname: A/AB/ABH/Mozilla-CA-20160104.tar.gz
     provides:
@@ -3454,16 +3452,6 @@ DISTRIBUTIONS
       Cwd 2
       ExtUtils::MakeMaker 0
       File::Temp 0.05
-  PerlIO-utf8_strict-0.007
-    pathname: L/LE/LEONT/PerlIO-utf8_strict-0.007.tar.gz
-    provides:
-      PerlIO::utf8_strict 0.007
-    requirements:
-      ExtUtils::MakeMaker 0
-      XSLoader 0
-      perl 5.008
-      strict 0
-      warnings 0
   Plack-1.0039
     pathname: M/MI/MIYAGAWA/Plack-1.0039.tar.gz
     provides:
@@ -3576,29 +3564,6 @@ DISTRIBUTIONS
       Pod::Find 0.21
       Pod::Parser 1.13
       Test::More 0
-  Pod-Coverage-TrustPod-0.100003
-    pathname: R/RJ/RJBS/Pod-Coverage-TrustPod-0.100003.tar.gz
-    provides:
-      Pod::Coverage::TrustPod 0.100003
-    requirements:
-      ExtUtils::MakeMaker 6.30
-      Pod::Coverage::CountParents 0
-      Pod::Eventual::Simple 0
-      Pod::Find 0
-      base 0
-      strict 0
-      warnings 0
-  Pod-Eventual-0.094001
-    pathname: R/RJ/RJBS/Pod-Eventual-0.094001.tar.gz
-    provides:
-      Pod::Eventual 0.094001
-      Pod::Eventual::Simple 0.094001
-    requirements:
-      Carp 0
-      ExtUtils::MakeMaker 6.30
-      Mixin::Linewise::Readers 0.102
-      strict 0
-      warnings 0
   Regexp-Common-2016060801
     pathname: A/AB/ABIGAIL/Regexp-Common-2016060801.tar.gz
     provides:
@@ -4321,28 +4286,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       vars 0
-      warnings 0
-  Test-Pod-1.51
-    pathname: E/ET/ETHER/Test-Pod-1.51.tar.gz
-    provides:
-      Test::Pod 1.51
-    requirements:
-      ExtUtils::MakeMaker 0
-      File::Find 0
-      Pod::Simple 3.05
-      Test::Builder::Tester 1.02
-      Test::More 0.62
-      perl 5.008
-  Test-Pod-Coverage-1.10
-    pathname: N/NE/NEILB/Test-Pod-Coverage-1.10.tar.gz
-    provides:
-      Test::Pod::Coverage 1.10
-    requirements:
-      ExtUtils::MakeMaker 0
-      Pod::Coverage 0
-      Test::Builder 0
-      perl 5.006
-      strict 0
       warnings 0
   Test-SharedFork-0.35
     pathname: E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
