@@ -55,7 +55,7 @@ ifdef UPDATE_MODULES
 		--image "$(IMAGE_TAG)" \
 		--cmd update-modules \
 		$(patsubst %,-a %,$(UPDATE_MODULES)) \
-		/vendor.tar.gz $@ > $*/run.log
+		/vendor.tar.gz $@ > $*/update.log
 else
 %/vendor.tar.gz: build-%
 	@echo TAR $@
