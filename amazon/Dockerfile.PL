@@ -16,3 +16,5 @@ RUN q{
 };
 
 build_bundle();
+
+RUN '$SYSTEM_PERL /usr/local/bin/cpanm Parse::CPAN::Meta';
