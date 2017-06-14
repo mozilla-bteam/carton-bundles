@@ -38,17 +38,36 @@ s3_uris:
 		echo $(S3_BUCKET_URI)/$$b; \
 	done
 
+s3_buckets:
+	@for b in $(BUNDLES); do \
+		echo $(S3_BUCKET)/$$b; \
+	done
+
+
 depends.mk: scan-deps $(git ls-files $(DIRS))
 	./scan-deps $(DIRS) > $@
 
+
+ifdef UPDATE_MODULES
+%/vendor.tar.gz: build-%
+	@echo UPDATE $@
+	@./run-and-copy \
+		--image "$(IMAGE_TAG)" \
+		--cmd update-modules \
+		$(patsubst %,-a %,$(UPDATE_MODULES)) \
+		/vendor.tar.gz $@ > $*/run.log
+else
 %/vendor.tar.gz: build-%
 	@echo TAR $@
 	@./run-and-copy --image "$(IMAGE_TAG)" --cmd build-bundle /vendor.tar.gz $@ > $*/run.log
+
+endif
 
 upload-%: %/vendor.tar.gz
 	@echo UPLOAD $<
 	@aws --profile $(AWS_PROFILE) s3 cp $< s3://$(S3_BUCKET)/$<
 	touch $@
+
 
 build-%: %/Dockerfile %/.dockerignore $(SCRIPTS) 
 	@echo BUILD $*
