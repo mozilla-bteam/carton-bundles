@@ -171,28 +171,45 @@ DISTRIBUTIONS
       Scalar::Util 1.21
       Test::More 0.98
       perl 5.006000
-  CPAN-Meta-2.150005
-    pathname: D/DA/DAGOLDEN/CPAN-Meta-2.150005.tar.gz
+  CPAN-Meta-2.150010
+    pathname: D/DA/DAGOLDEN/CPAN-Meta-2.150010.tar.gz
     provides:
-      CPAN::Meta 2.150005
-      CPAN::Meta::Converter 2.150005
-      CPAN::Meta::Feature 2.150005
-      CPAN::Meta::History 2.150005
-      CPAN::Meta::Merge 2.150005
-      CPAN::Meta::Prereqs 2.150005
-      CPAN::Meta::Spec 2.150005
-      CPAN::Meta::Validator 2.150005
+      CPAN::Meta 2.150010
+      CPAN::Meta::Converter 2.150010
+      CPAN::Meta::Feature 2.150010
+      CPAN::Meta::History 2.150010
+      CPAN::Meta::Merge 2.150010
+      CPAN::Meta::Prereqs 2.150010
+      CPAN::Meta::Spec 2.150010
+      CPAN::Meta::Validator 2.150010
+      Parse::CPAN::Meta 2.150010
     requirements:
       CPAN::Meta::Requirements 2.121
-      CPAN::Meta::YAML 0.008
+      CPAN::Meta::YAML 0.011
       Carp 0
+      Encode 0
+      Exporter 0
       ExtUtils::MakeMaker 6.17
-      JSON::PP 2.27200
-      Parse::CPAN::Meta 1.4414
+      File::Spec 0.80
+      JSON::PP 2.27300
       Scalar::Util 0
-      perl 5.008
+      perl 5.008001
       strict 0
       version 0.88
+      warnings 0
+  CPAN-Meta-YAML-0.018
+    pathname: D/DA/DAGOLDEN/CPAN-Meta-YAML-0.018.tar.gz
+    provides:
+      CPAN::Meta::YAML 0.018
+    requirements:
+      B 0
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      Scalar::Util 0
+      perl 5.008001
+      strict 0
       warnings 0
   Cache-Memcached-Fast-0.23
     pathname: K/KR/KROKI/Cache-Memcached-Fast-0.23.tar.gz
@@ -451,7 +468,7 @@ DISTRIBUTIONS
   Crypt-OpenPGP-1.12
     pathname: S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz
     provides:
-      Crypt::OpenPGP 1.13
+      Crypt::OpenPGP 1.12
       Crypt::OpenPGP::Armour undef
       Crypt::OpenPGP::Buffer undef
       Crypt::OpenPGP::CFB undef
@@ -2754,6 +2771,7 @@ DISTRIBUTIONS
       IO::Socket::SSL::Utils 2.014
     requirements:
       ExtUtils::MakeMaker 0
+      Mozilla::CA 0
       Net::SSLeay 1.46
       Scalar::Util 0
   IO-stringy-2.111
@@ -2890,6 +2908,18 @@ DISTRIBUTIONS
       base 0
       strict 0
       warnings 0
+  LWP-Protocol-https-6.07
+    pathname: O/OA/OALDERS/LWP-Protocol-https-6.07.tar.gz
+    provides:
+      LWP::Protocol::https 6.07
+      LWP::Protocol::https::Socket 6.07
+    requirements:
+      ExtUtils::MakeMaker 0
+      IO::Socket::SSL 1.54
+      LWP::UserAgent 6.06
+      Mozilla::CA 20110101
+      Net::HTTPS 6
+      perl 5.008001
   Lexical-SealRequireHints-0.010
     pathname: Z/ZE/ZEFRAM/Lexical-SealRequireHints-0.010.tar.gz
     provides:
@@ -4962,95 +4992,6 @@ DISTRIBUTIONS
       XSLoader 0
       lib 0
       perl 5.008001
-  libwww-perl-5.835
-    pathname: G/GA/GAAS/libwww-perl-5.835.tar.gz
-    provides:
-      Bundle::LWP 5.835
-      File::Listing 5.814
-      File::Listing::apache 5.814
-      File::Listing::dosftp 5.814
-      File::Listing::netware 5.814
-      File::Listing::unix 5.814
-      File::Listing::vms 5.814
-      HTML::Form 5.829
-      HTML::Form::FileInput 5.829
-      HTML::Form::IgnoreInput 5.829
-      HTML::Form::ImageInput 5.829
-      HTML::Form::Input 5.829
-      HTML::Form::KeygenInput 5.829
-      HTML::Form::ListInput 5.829
-      HTML::Form::SubmitInput 5.829
-      HTML::Form::TextInput 5.829
-      HTTP::Config 5.835
-      HTTP::Cookies 5.833
-      HTTP::Cookies::Microsoft 5.821
-      HTTP::Cookies::Netscape 5.832
-      HTTP::Daemon 5.827
-      HTTP::Daemon::ClientConn 5.827
-      HTTP::Date 5.831
-      HTTP::Headers 5.835
-      HTTP::Headers::Auth 5.817
-      HTTP::Headers::ETag 5.810
-      HTTP::Headers::Util 5.817
-      HTTP::Message 5.835
-      HTTP::Negotiate 5.835
-      HTTP::Request 5.827
-      HTTP::Request::Common 5.824
-      HTTP::Response 5.835
-      HTTP::Status 5.817
-      LWP 5.835
-      LWP::Authen::Basic undef
-      LWP::Authen::Digest undef
-      LWP::Authen::Ntlm 5.835
-      LWP::ConnCache 5.810
-      LWP::Debug undef
-      LWP::DebugFile undef
-      LWP::MediaTypes 5.835
-      LWP::MemberMixin undef
-      LWP::Protocol 5.829
-      LWP::Protocol::GHTTP undef
-      LWP::Protocol::MyFTP undef
-      LWP::Protocol::cpan undef
-      LWP::Protocol::data undef
-      LWP::Protocol::file undef
-      LWP::Protocol::ftp undef
-      LWP::Protocol::gopher undef
-      LWP::Protocol::http undef
-      LWP::Protocol::http10 undef
-      LWP::Protocol::http::Socket undef
-      LWP::Protocol::http::SocketMethods undef
-      LWP::Protocol::https undef
-      LWP::Protocol::https10 undef
-      LWP::Protocol::https::Socket undef
-      LWP::Protocol::loopback undef
-      LWP::Protocol::mailto undef
-      LWP::Protocol::nntp undef
-      LWP::Protocol::nogo undef
-      LWP::RobotUA 5.835
-      LWP::Simple 5.835
-      LWP::UserAgent 5.835
-      Net::HTTP 5.834
-      Net::HTTP::Methods 5.834
-      Net::HTTP::NB 5.810
-      Net::HTTPS 5.819
-      WWW::RobotRules 5.832
-      WWW::RobotRules::AnyDBM_File 5.835
-      WWW::RobotRules::InCore 5.832
-    requirements:
-      Compress::Raw::Zlib 0
-      Digest::MD5 0
-      ExtUtils::MakeMaker 0
-      HTML::Parser 3.33
-      HTML::Tagset 0
-      IO::Compress::Deflate 0
-      IO::Compress::Gzip 0
-      IO::Uncompress::Gunzip 0
-      IO::Uncompress::Inflate 0
-      IO::Uncompress::RawInflate 0
-      MIME::Base64 2.1
-      Net::FTP 2.58
-      URI 1.10
-      perl 5.006
   libwww-perl-6.26
     pathname: O/OA/OALDERS/libwww-perl-6.26.tar.gz
     provides:
