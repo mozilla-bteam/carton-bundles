@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+use 5.10.1;
+use strict;
+use warnings;
+use Getopt::Long qw(:config gnu_getopt);
+use Carton::Snapshot;
+use Set::Object qw(set);
+
+my ($file, @drop);
+GetOptions('file|f=s' => \$file, 'drop|d=s@' => \@drop);
+die "--file (-f) is required" unless $file;
+
+my $s = Carton::Snapshot->new(path => $file);
+$s->load;
+
+if (@drop) {
+    my $drop = set(@drop);
+    $s->{_distributions} = [ grep { not $drop->contains($_->name) } $s->distributions ];
+    $s->save;
+}
+
+say $_->name for $s->distributions;
