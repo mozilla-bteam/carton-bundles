@@ -14,11 +14,11 @@ $PERL Makefile.PL && make cpanfile GEN_CPANFILE_ARGS="$GEN_CPANFILE_ARGS"
 
 $PERL $CARTON install && \
     wget -q -Olocal/cache/authors/id/S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz \
-        http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/Crypt-OpenPGP-1.13-TRIAL.tar.gz &&
+        http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/Crypt-OpenPGP-1.14.tar.gz &&
     $PERL $CARTON bundle && \
     $PERL $CARTON fatpack && \
     rm -vfr local/lib/perl5 && \
     $SYSTEM_PERL ./vendor/bin/carton install --cached --deployment && \
-    prove -I local/lib/perl5 t/001compile.t || exit 1
+    prove -I local/lib/perl5 t/001compile.t t/9* || exit 1
 
 package-bundle
