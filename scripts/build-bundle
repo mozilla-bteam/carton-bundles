@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
+set -x
 
 fetch-pari
 
@@ -8,17 +9,19 @@ git fetch
 git reset --hard origin/$GIT_BRANCH
 
 rm -f t/013dbschema.t META.*
-
 rm -vf cpanfile
-$PERL Makefile.PL && make cpanfile GEN_CPANFILE_ARGS="$GEN_CPANFILE_ARGS"
 
-$PERL $CARTON install && \
-    wget -q -Olocal/cache/authors/id/S/SR/SROMA2OV/Crypt-OpenPGP-1.12.tar.gz \
-        http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/Crypt-OpenPGP-1.15.tar.gz &&
-    $PERL $CARTON bundle && \
-    $PERL $CARTON fatpack && \
-    rm -vfr local/lib/perl5 && \
-    $SYSTEM_PERL ./vendor/bin/carton install --cached --deployment && \
-    prove -I local/lib/perl5 t/001compile.t t/9* || exit 1
+$PERL Makefile.PL
+make cpanfile GEN_CPANFILE_ARGS="$GEN_CPANFILE_ARGS"
+
+$PERL $CARTON install 2>~/vanilla-install.err > ~/vanilla-install.log
+wget -q -Olocal/cache/authors/id/S/SR/SROMANOV/Crypt-OpenPGP-1.12.tar.gz \
+    http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/Crypt-OpenPGP-1.15.tar.gz
+$PERL $CARTON bundle
+$PERL $CARTON fatpack
+rm -vfr local/lib/perl5
+$SYSTEM_PERL ./vendor/bin/carton install --cached --deployment \
+    2> ~/system-install.err > ~/system-install.log
+prove -I local/lib/perl5 t/001compile.t t/9* 
 
 package-bundle

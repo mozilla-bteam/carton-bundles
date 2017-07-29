@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
+set -x
 
 probe-packages > PACKAGES.txt
 probe-libs     > LIBS.txt
