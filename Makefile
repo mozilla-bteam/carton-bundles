@@ -55,11 +55,11 @@ ifdef UPDATE_MODULES
 		--image "$(IMAGE_TAG)" \
 		--cmd update-modules \
 		$(patsubst %,-a %,$(UPDATE_MODULES)) \
-		/vendor.tar.gz $@ > $*/update.log
+		/vendor.tar.gz $@
 else
 %/vendor.tar.gz: build-%
 	@echo TAR $@
-	@./run-and-copy --image "$(IMAGE_TAG)" --cmd build-bundle /vendor.tar.gz $@ > $*/run.log
+	@./run-and-copy --image "$(IMAGE_TAG)" --cmd build-bundle /vendor.tar.gz $@
 
 endif
 
@@ -71,7 +71,7 @@ upload-%: %/vendor.tar.gz
 
 build-%: %/Dockerfile %/.dockerignore $(SCRIPTS) 
 	@echo BUILD $*
-	@cd $* && $(DOCKER) build -m 2G -t $(IMAGE_TAG) . > build.log
+	@cd $* && $(DOCKER) build -m 2G -t $(IMAGE_TAG) .
 	@$(DOCKER) images -q $@ > $@
 
 clean-%:
