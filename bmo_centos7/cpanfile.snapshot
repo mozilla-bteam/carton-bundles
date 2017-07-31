@@ -2472,30 +2472,6 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.006002
-  LWP-Protocol-connect-6.09
-    pathname: B/BE/BENNING/LWP-Protocol-connect-6.09.tar.gz
-    provides:
-      LWP::Protocol::connect 6.09
-      LWP::Protocol::connect::Socket::Base 6.09
-      LWP::Protocol::http::connect 6.09
-      LWP::Protocol::http::connect::Socket 6.09
-      LWP::Protocol::https::connect 6.09
-      LWP::Protocol::https::connect::Socket 6.09
-      URI::connect 6.09
-    requirements:
-      ExtUtils::MakeMaker 6.30
-      HTTP::Request 0
-      IO::Socket::SSL 0
-      LWP::Protocol 0
-      LWP::Protocol::http 0
-      LWP::Protocol::https 0
-      LWP::UserAgent 0
-      Test::Exception 0
-      Test::More 0
-      URI::http 0
-      base 0
-      strict 0
-      warnings 0
   LWP-Protocol-https-6.07
     pathname: O/OA/OALDERS/LWP-Protocol-https-6.07.tar.gz
     provides:
