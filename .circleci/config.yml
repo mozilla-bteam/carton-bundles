@@ -19,6 +19,12 @@ jobs:
       - store_artifacts:
           path: /app/bmo/vendor.tar.gz
           destination: bmo.tar.gz
+      - store_artifacts:
+          path: /app/bmo/build.log
+          destination: bmo-build.log
+      - store_artifacts:
+          path: /app/bmo/run.log
+          destination: bmo-run.log
 
   build_mozreview:
     working_directory: /app
@@ -34,6 +40,12 @@ jobs:
       - store_artifacts:
           path: /app/bmo/mozreview.tar.gz
           destination: mozreview.tar.gz
+      - store_artifacts:
+          path: /app/mozreview/build.log
+          destination: mozreview-build.log
+      - store_artifacts:
+          path: /app/mozreview/run.log
+          destination: mozreview-run.log
 
 workflows:
   version: 2
