@@ -26,6 +26,27 @@ jobs:
           path: /app/bmo/run.log
           destination: bmo-run.log
 
+  build_bmo_centos7:
+    working_directory: /app
+    docker:
+      - image: docker:17.06.1-ce
+    steps:
+      - setup_remote_docker
+      - run:
+          name: install build (host) dependencies
+          command: apk update && apk add git openssh-client make bash perl perl-ipc-run3
+      - checkout
+      - run: make DIRS=bmo_centos7/ snapshots
+      - store_artifacts:
+          path: /app/bmo_centos7/vendor.tar.gz
+          destination: bmo_centos7.tar.gz
+      - store_artifacts:
+          path: /app/bmo_centos7/build.log
+          destination: bmo_centos7-build.log
+      - store_artifacts:
+          path: /app/bmo_centos7/run.log
+          destination: bmo_centos7-run.log
+
   build_mozreview:
     working_directory: /app
     docker:
@@ -52,4 +73,5 @@ workflows:
   build_and_test:
     jobs:
       - build_bmo
+      - build_bmo_centos7
       - build_mozreview
