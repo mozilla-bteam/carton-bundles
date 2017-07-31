@@ -12,7 +12,7 @@ jobs:
     steps:
       - setup_remote_docker
       - run:
-          name: install git and ssh
+          name: install build (host) dependencies
           command: apk update && apk add git openssh-client make bash perl perl-ipc-run3
       - checkout
       - run: make DIRS=bmo/ snapshots
@@ -33,7 +33,7 @@ jobs:
     steps:
       - setup_remote_docker
       - run:
-          name: install git and ssh
+          name: install build (host) dependencies
           command: apk update && apk add git openssh-client make bash perl perl-ipc-run3
       - checkout
       - run: make DIRS=mozreview/ snapshots
